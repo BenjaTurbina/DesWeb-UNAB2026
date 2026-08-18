@@ -1,0 +1,61 @@
+/* CSS Variables generated from Kigen.design */
+:root {
+  --electric-violet-1: #fbf4ff;
+  --electric-violet-2: #efddff;
+  --electric-violet-3: #e2beff;
+  --electric-violet-4: #d7a1ff;
+  --electric-violet-5: #cc84ff;
+  --electric-violet-6: #c363ff;
+  --electric-violet-7: #bd45ff;
+  --electric-violet-8: #a32ced;
+  --electric-violet-9: #8222bc;
+  --electric-violet-10: #5d1789;
+  --electric-violet-11: #4a0e6e;
+  --electric-violet-12: #360652;
+  --electric-violet-13: #240339;
+}
+
+.barra_principal {
+  background-color:#7a39a8; 
+  font-size: 1.4rem ;
+}
+
+.albums-desc{
+  background-color:#be45ff60 ;
+}
+
+.takanaka__img{
+  border-radius: 40%;
+  border: 12px solid #be45ff60;
+}
+
+.caja-desc-takanaka{
+  background-color:#be45ff60 ;
+}
+
+.boton{
+  background-color:#55109b60; 
+  font-size: 1.4rem !important; 
+  border:2px solid #c86eff !important; 
+  border-radius: 20px; 
+  text-align: center;
+  color:#fbf4ff !important;
+}
+
+.caja-pricipal{
+  background-color:#a64fe4 !important
+}
+
+
+.nav-link{
+  color:#fbf4ff !important;
+}
+
+.box__central{
+  background-color:#ddaaff
+}
+
+.footer{
+  background-color: #240339;
+  color: white;
+}
