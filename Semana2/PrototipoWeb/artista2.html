@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <title>MusicFan</title>
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar barra_principal navbar-expand-sm">
-        <div class="container-fluid ">
+        <div class="container-fluid">
             <a class="navbar-brand boton p-2 mx-2" href="inicio.html">Fan club</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
                 <span class="navbar-toggler-icon"></span>
@@ -22,7 +23,7 @@
                         <a class="nav-link nav_opciones mx-3" href="artista1.html">Steve Lacy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-3" href="artista2.html">Artista 2</a>
+                        <a class="nav-link mx-3" href="artista2.html">Masayoshi Takanaka</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="contacto.html">Contacto</a>
@@ -34,7 +35,7 @@
     </nav>
 
     <!-- Container -->
-    <div class="container-fluid box__central p-4 p-md-5">
+    <div class="container-fluid box__central__takanaka p-4 p-md-5">
         <div class="row g-4 mb-4 align-items-stretch">
             <div class="col-12 col-md-7 d-flex">
                 <div class="fotos-takanaka w-100 d-flex flex-column justify-content-center">
@@ -76,30 +77,95 @@
                         Su música empezó a ganar popularidad internacional, especialmente entre guitarristas y aficionados al jazz fusion instrumental, consolidando su reputación como uno de los músicos más originales de su generación.
                     </span>
                 </div>
+
+                <div class="albums-desc w-100 p-4 flex-fill d-flex flex-column justify-content-center align-items-center">
+                    <h5 class="mb-3">Albumnes Destacados </h5>
+                    <ol class="caja-desc-takanaka lista_alb">
+                        <li>虹伝説 THE RAINBOW GOBLINS - 1981</li>
+                        <li>An Insatiable High - 1977</li>
+                        <li>Alone - 1981</li>
+                        <li>Guitar Wonder - 1996</li>
+                    </ol>
+                </div>
+
             </div>
-
-            <div class="col-12 col-md-6 d-flex flex-column gap-4">
-                <center><div class="caja-secundaria bg-light"><strong>Lo Destacado de esta semana:</strong></div></center>
-                <center><div class="caja-terciara bg-warning"> Steve Lacy</div></center>
-                <center><div class="caja-terciara bg-warning"> Artista 2</div></center>
-
-            </div>
-
         </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="caja-principal w-100 p-3 d-flex flex-column align-items-center justify-content-center">
+                    <div style="font-size: 15px; color: whitesmoke;" class="mb-2">Oh! Tengo Suerte</div>
+                    <audio controls class="w-100" style="max-width: 800px;">
+                        <source src="audio/Oh! Tengo Suerte.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Footer -->
-    <div class="container-fluid footer">
-        <div class="row"> 
-            <div class = "col-4"> </div>
-            <div class = "col-4"> <center>Empresa BBL&FGO</center></div>
-            <div class = "col-4"></div>
+    <footer class="text-center text-lg-start" style="background-color: #360652;">
+        <div class="container d-flex justify-content-center py-5">
+        <button type="button" class="btn btn-primary btn-lg  rounded-circle mx-2" style="background-color: #54456b;">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg rounded-circle mx-2" style="background-color: #54456b;">
+            <i class="fab fa-youtube"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg rounded-circle mx-2" style="background-color: #54456b;">
+            <i class="fab fa-instagram"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg rounded-circle mx-2" style="background-color: #54456b;">
+            <i class="fab fa-twitter"></i>
+        </button>
         </div>
 
+        <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2026 Copyright BBL&FGO 
+        </div>
 
-    </div>
-
+    </footer>
+    
     <!-- Modal -->
-
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Suscribete al Newsletter</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="inicio.html">
+                        <div class="mb-3 mt-3">
+                            <label for="email" class="form-label">Email:</label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                        </div>
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="noticiasM"> Noticias de Musica
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="noticiasP"> Noticias de Peliculas
+                            </label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="noticiasV"> Noticias de Videojuegos
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enter</button>
+                    </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

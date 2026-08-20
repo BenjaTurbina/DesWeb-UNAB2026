@@ -41,11 +41,17 @@
   border-radius: 20px;
   font-size: 1.15rem;
   text-align: justify;
+  box-shadow: -5px -2px 4px 2px #4a0e6e;
 }
 
 .box__central__takanaka{
   background: radial-gradient(circle,#bd45ff,#5d1789,#360652);
   
+}
+
+.lista_alb{
+  width: 370px;
+  height: 120px;
 }
 
 

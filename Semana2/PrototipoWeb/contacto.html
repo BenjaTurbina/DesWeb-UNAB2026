@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <title>MusicFan</title>
 </head>
@@ -22,7 +23,7 @@
                         <a class="nav-link nav_opciones mx-3" href="artista1.html">Steve Lacy</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link mx-3" href="artista2.html">Artista 2</a>
+                        <a class="nav-link mx-3" href="artista2.html">Masayoshi Takanaka</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link mx-3" href="contacto.html">Contacto</a>
@@ -34,17 +35,90 @@
     </nav>
 
     <!-- Container -->
-
-    <!-- Footer -->
-    <div class="container-fluid footer">
-        <div class="row"> 
-            <div class = "col-4"> </div>
-            <div class = "col-4"> <center>Empresa BBL&FGO</center></div>
-            <div class = "col-4"></div>
+    <div class="container-fluid ">
+            <style>
+                form {
+                background-color: #800080; 
+                padding: 20px;
+                border-radius: 8px;
+                }
+                label, h3 {
+                color: white; 
+                }
+            </style>
+            <form action="empresa.html">
+                <div class="mb-3 mt-3">
+                    <label for="email" class="form-label">Email:</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                </div>
+                <label for="comment">Comments:</label>
+                <textarea class="form-control" rows="5" id="comment" name="text"></textarea>
+                <button type="button" class="btn btn-primary mt-1">Enviar</button>
+            </form>
         </div>
 
+    <!-- Footer -->
+    <footer class="text-center text-lg-start" style="background-color: #360652;">
+        <div class="container d-flex justify-content-center py-5">
+        <button type="button" class="btn btn-primary btn-lg  rounded-circle mx-2" style="background-color: #54456b;">
+            <i class="fab fa-facebook-f"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg rounded-circle mx-2" style="background-color: #54456b;">
+            <i class="fab fa-youtube"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg rounded-circle mx-2" style="background-color: #54456b;">
+            <i class="fab fa-instagram"></i>
+        </button>
+        <button type="button" class="btn btn-primary btn-lg rounded-circle mx-2" style="background-color: #54456b;">
+            <i class="fab fa-twitter"></i>
+        </button>
+        </div>
 
-    </div>
- 
+        <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2026 Copyright BBL&FGO 
+        </div>
+
+    </footer>
+    <!-- Modal -->
+      <div class="modal fade" id="myModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <h4 class="modal-title">Suscribete al Newsletter</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <form action="inicio.html">
+                            <div class="mb-3 mt-3">
+                                <label for="email" class="form-label">Email:</label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                            </div>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="noticiasM"> Noticias de Musica
+                                </label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="noticiasP"> Noticias de Peliculas
+                                </label>
+                            </div>
+                            <div class="form-check mb-3">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="noticiasV"> Noticias de Videojuegos
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Enter</button>
+                        </form>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
 </html>
