@@ -21,17 +21,33 @@
 }
 
 .albums-desc{
-  background-color:#be45ff60 ;
+  color: whitesmoke;
 }
 
 .takanaka__img{
-  border-radius: 40%;
-  border: 12px solid #be45ff60;
+  border: 5px solid #bd45ff; /* El núcleo blanco del borde */
+  border-radius: 30%;
+  padding: 3px;
+  background-color: #4a0e6e; /* Fondo oscuro para resaltar el brillo */
+  box-shadow: 
+    0 0 5px #c363ff,
+    0 0 20px #c363ff60,
+    0 0 40px #c363ff13; /* Capas de brillo progresivo */
 }
 
 .caja-desc-takanaka{
-  background-color:#be45ff60 ;
+  background-color:#8222bc;
+  color: whitesmoke;
+  border-radius: 20px;
+  font-size: 1.15rem;
+  text-align: justify;
 }
+
+.box__central__takanaka{
+  background: radial-gradient(circle,#bd45ff,#5d1789,#360652);
+  
+}
+
 
 .boton{
   background-color:#55109b60; 
