@@ -1,28 +1,21 @@
 {
-  "name": "desarrollo-web-unab",
+  "name": "db",
   "version": "1.0.0",
-  "description": "Integrantes:\r - Benjamín Bravo L.\r - Franco González O.\r Fecha de vigencia repositorio: 17/08/2026\r Cambio de repositorio desde -> https://github.com/im-franco/DesWeb-2026\r Motivo del cambio fue realizado por estar trabajando en fork separados, forma de trabajo la cual no estaba correcta acorde a lo solicitado",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" : "nodemon server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/BenjaTurbina/DesWeb-UNAB2026.git"
+    "start": "nodemon server.js"
   },
   "keywords": [],
+  "author": "",
+  "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/BenjaTurbina/DesWeb-UNAB2026/issues"
-  },
-  "homepage": "https://github.com/BenjaTurbina/DesWeb-UNAB2026#readme",
   "dependencies": {
     "apollo-server-express": "^3.13.0",
     "cors": "^2.8.6",
     "express": "^5.2.1",
-    "graphql": "15.10",
-    "mongoose": "^9.9.4"
+    "graphql": "15",
+    "mongoose": "8.17.1"
   }
 }
