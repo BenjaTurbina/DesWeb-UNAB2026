@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <title>SandwichDV - Pedir</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class= "navbar navbar-expand-lg  shadow-sm">
+        <div class = "container-fluid">
+        <!-- Logo -->
+            <img src="logo.jpg" alt="SandwicDV" height="80" class="d-inline-block align-text-top logo_empresa">
+        <!-- Links -->
+        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+            <a class="nav-link active" href="Pedir.html">Pedir</a>
+            </li>
+            <li class="nav-item ">
+            <a class="nav-link " href="nosotros.html">Nosotros</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" href="sucursales.html">Sucursales</a>
+            </li>
+        </ul>
+            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+            <!-- Botón Carrito -->
+                <button class="btn d-flex align-items-center justify-content-center" 
+                    type="button" aria-label="Ver carrito">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                </button>
+                <!-- Botón Perfil (estilo Messenger) -->
+                <button class="btn p-2 d-flex align-items-center justify-content-center" 
+                    type="button" aria-label="Perfil de usuario">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+    <!-- Body -->
+    <main class="bloque_fondo py-4">
+    <div class="container">
+        <div class="row g-5 py-5">
+
+        <!-- Panel de Filtros  -->
+        <aside class="col-lg-3">
+            <div class="p-4 h-100 Panel_filtro">
+            <h5 class="fw-bold mb-4 central">Filtar Productos</h5>
+             <!-- Seccion filtro por proteina  -->
+            <div class="mb-3">
+                <label class="form-label fw-semibold small text-uppercase text-muted">Proteina Base</label>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro1">
+                <label class="form-check-label" for="filtro1">Carnes Rojas</label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro2">
+                <label class="form-check-label" for="filtro2">Carnes Blancas</label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro3">
+                <label class="form-check-label" for="filtro3">Vegetariano</label>
+                </div>
+            </div>
+             <!-- Seccion filtro por precios  -->   
+            <div class="mb-3">
+                <label class="form-label fw-semibold small text-uppercase text-muted">Precio</label>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro4">
+                <label class="form-check-label" for="filtro4">Opción 4</label>
+                </div>
+                <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="filtro5">
+                <label class="form-check-label" for="filtro5">Opción 5</label>
+                </div>
+            </div>
+            <button class="btn btn-primary w-100 mt-3" type="button">Aplicar filtros</button>
+            </div>
+        </aside>
+
+<!-- Bloque central: Pedidos en diagonal -->
+    <section class="col-lg-9">
+    <div class="bg-white rounded-4 shadow-sm p-4 h-100">
+        <h5 class="fw-bold mb-4">Pedido</h5>
+        <div class="row g-4">
+
+        <!-- Columna 1 -->
+        <div class="col-md-6">
+            
+            <!-- Card 1 -->
+            <div class="card shadow-sm rounded-4 border-0 mb-4">
+            <div class="row g-0">
+                <div class="col-4">
+                <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                    <span class="text-muted small">IMG</span>
+                </div>
+                </div>
+                <div class="col-8">
+                <div class="card-body py-2">
+                    <h6 class="card-title fw-semibold mb-1">Nombre del plato</h6>
+                    <p class="card-text text-muted small mb-0">Breve descripción del producto y sus ingredientes principales.</p>
+                </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 1</span>
+                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 2</span>
+                <span class="badge rounded-pill bg-light text-dark border">Opción 3</span>
+            </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="card shadow-sm rounded-4 border-0 mt-5">
+            <div class="row g-0">
+                <div class="col-4">
+                <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                    <span class="text-muted small">IMG</span>
+                </div>
+                </div>
+                <div class="col-8">
+                <div class="card-body py-2">
+                    <h6 class="card-title fw-semibold mb-1">Nombre del plato</h6>
+                    <p class="card-text text-muted small mb-0">Breve descripción del producto y sus ingredientes principales.</p>
+                </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 4</span>
+                <span class="badge rounded-pill bg-light text-dark border">Opción 5</span>
+            </div>
+            </div>
+
+        </div>
+
+        <!-- Columna 2 (desplazada hacia abajo para efecto diagonal) -->
+        <div class="col-md-6 mt-5 mt-md-0">
+
+            <!-- Card 3 -->
+            <div class="card shadow-sm rounded-4 border-0 mb-4 mt-md-5">
+            <div class="row g-0">
+                <div class="col-4">
+                <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                    <span class="text-muted small">IMG</span>
+                </div>
+                </div>
+                <div class="col-8">
+                <div class="card-body py-2">
+                    <h6 class="card-title fw-semibold mb-1">Nombre del plato</h6>
+                    <p class="card-text text-muted small mb-0">Breve descripción del producto y sus ingredientes principales.</p>
+                </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 1</span>
+                <span class="badge rounded-pill bg-light text-dark border">Opción 2</span>
+            </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card shadow-sm rounded-4 border-0 mt-5">
+            <div class="row g-0">
+                <div class="col-4">
+                <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                    <span class="text-muted small">IMG</span>
+                </div>
+                </div>
+                <div class="col-8">
+                <div class="card-body py-2">
+                    <h6 class="card-title fw-semibold mb-1">Nombre del plato</h6>
+                    <p class="card-text text-muted small mb-0">Breve descripción del producto y sus ingredientes principales.</p>
+                </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 pt-0">
+                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 3</span>
+                <span class="badge rounded-pill bg-light text-dark border">Opción 5</span>
+            </div>
+            </div>
+
+        </div>
+
+        </div>
+    </div>
+    </section>
+    <!-- Footer -->    
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+:root {
+  /* Naranja principal */
+  --color-naranja-1: #D76D00;
+  --color-naranja-1-light: #E8951A;
+  --color-naranja-1-dark: #8C4500;
+
+  /* Naranja secundario / dorado */
+  --color-naranja-2: #D78800;
+  --color-naranja-2-light: #E8A93A;
+  --color-naranja-2-dark: #7A5200;
+
+  /* Azul petróleo */
+  --color-azul-1: #026986;
+  --color-azul-1-light: #29ABE2;
+  --color-azul-1-dark: #0B4F63;
+
+  /* Azul marino */
+  --color-azul-2: #073D8E;
+  --color-azul-2-light: #1E5FBF;
+  --color-azul-2-dark: #06276B;
+}
+
+.navbar {
+    background-color: #D76D00;
+    border-bottom: 2px solid #E8A93A;
+}
+
+.bloque_fondo {
+    background:radial-gradient(farthest-corner at 40px 40px,#026986,#29ABE2,#073D8E);
+}
+
+.Panel_filtro{
+    background-color: #E8A93A !important;
+    border: 5px solid #8C4500;
+    border-radius: 50px;
+}
+
+.btn {
+    width: 80px; 
+    height: 50px;
+    background-color: #E8A93A !important;
+    border: 2px solid #D78800 !important;
+    border-radius: 30px !important;
+}
+
+.navbar-nav {
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.logo_empresa {
+    border: 3px solid #8C4500;
+    border-radius: 30px
+}
