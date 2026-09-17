@@ -22,22 +22,49 @@
 
 .navbar {
     background-color: #D76D00;
-    border-bottom: 2px solid #E8A93A;
+    border-bottom: 4px solid #06286b96;
 }
+
 
 .bloque_fondo {
-    background:radial-gradient(farthest-corner at 40px 40px,#026986,#29ABE2,#073D8E);
+    background:radial-gradient(farthest-corner at 100px 100px,#29ABE2,#073D8E);
 }
 
-.Panel_filtro{
+.Panel_pedido, .Panel_filtro{
+    background-color:#d76b00c9 ;
+    border: 5px solid #E8A93A;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+
+.precios{
+    font-size:15px;
+}
+
+.accordion-button{
     background-color: #E8A93A !important;
-    border: 5px solid #8C4500;
-    border-radius: 50px;
 }
 
+.accordion-body{
+    background-color: #E8951A !important;
+}
+
+.bloque_producto{
+    background-color:#E8A93A !important;
+    border: 4px solid #D76D00 !important;
+}
+
+
+
+.badge{
+    background-color: #d78800 !important;
+    border: 2px solid #E8A93A;
+}
+
+.acordeonFiltros{
+    background-color: #0B4F63;
+}
 .btn {
-    width: 80px; 
-    height: 50px;
     background-color: #E8A93A !important;
     border: 2px solid #D78800 !important;
     border-radius: 30px !important;

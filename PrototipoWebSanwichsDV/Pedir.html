@@ -1,195 +1,678 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src = "acciones_pedir.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
     <title>SandwichDV - Pedir</title>
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class= "navbar navbar-expand-lg  shadow-sm">
-        <div class = "container-fluid">
-        <!-- Logo -->
-            <img src="logo.jpg" alt="SandwicDV" height="80" class="d-inline-block align-text-top logo_empresa">
-        <!-- Links -->
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            <a class="nav-link active" href="Pedir.html">Pedir</a>
-            </li>
-            <li class="nav-item ">
-            <a class="nav-link " href="nosotros.html">Nosotros</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="sucursales.html">Sucursales</a>
-            </li>
-        </ul>
-            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
+    <!-- Navbar Responsivo -->
+    <nav class="navbar navbar-expand-lg shadow-sm">
+        <div class="container-fluid">
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
+            </a>
+            <!-- Botón Hamburguesa para móviles -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Alternar navegación">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Links y Botones colapsables -->
+            <div class="collapse navbar-collapse" id="menuNavegacion">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Pedir.html">Pedir</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">Nosotros</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sucursales.html">Sucursales</a>
+                    </li>
+                </ul>
+           <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
             <!-- Botón Carrito -->
                 <button class="btn d-flex align-items-center justify-content-center" 
                     type="button" aria-label="Ver carrito">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                     </svg>
                 </button>
                 <!-- Botón Perfil (estilo Messenger) -->
                 <button class="btn p-2 d-flex align-items-center justify-content-center" 
                     type="button" aria-label="Perfil de usuario">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                     </svg>
                 </button>
             </div>
+            </div>
         </div>
     </nav>
+
     <!-- Body -->
     <main class="bloque_fondo py-4">
-    <div class="container">
-        <div class="row g-5 py-5">
 
-        <!-- Panel de Filtros  -->
-        <aside class="col-lg-3">
-            <div class="p-4 h-100 Panel_filtro">
-            <h5 class="fw-bold mb-4 central">Filtar Productos</h5>
-             <!-- Seccion filtro por proteina  -->
-            <div class="mb-3">
-                <label class="form-label fw-semibold small text-uppercase text-muted">Proteina Base</label>
-                <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="filtro1">
-                <label class="form-check-label" for="filtro1">Carnes Rojas</label>
+    <!-- Carrusel de Promociones -->
+        <div class="container mt-4 mb-2">
+            <div id="carruselPromociones" class="carousel slide rounded-4 overflow-hidden shadow-sm" data-bs-ride="carousel">
+                
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carruselPromociones" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Promo 1"></button>
+                    <button type="button" data-bs-target="#carruselPromociones" data-bs-slide-to="1" aria-label="Promo 2"></button>
+                    <button type="button" data-bs-target="#carruselPromociones" data-bs-slide-to="2" aria-label="Promo 3"></button>
                 </div>
-                <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="filtro2">
-                <label class="form-check-label" for="filtro2">Carnes Blancas</label>
-                </div>
-                <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="filtro3">
-                <label class="form-check-label" for="filtro3">Vegetariano</label>
-                </div>
-            </div>
-             <!-- Seccion filtro por precios  -->   
-            <div class="mb-3">
-                <label class="form-label fw-semibold small text-uppercase text-muted">Precio</label>
-                <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="filtro4">
-                <label class="form-check-label" for="filtro4">Opción 4</label>
-                </div>
-                <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="filtro5">
-                <label class="form-check-label" for="filtro5">Opción 5</label>
-                </div>
-            </div>
-            <button class="btn btn-primary w-100 mt-3" type="button">Aplicar filtros</button>
-            </div>
-        </aside>
+                
+                <!-- Contenido de los Slides -->
+                <div class="carousel-inner">
+                    
+                    <!-- Slide 1: Promoción Clásica -->
+                    <div class="carousel-item active">
+                        <div class="w-100 d-flex flex-column align-items-center justify-content-center text-white text-center px-4" style="min-height: 280px; background: linear-gradient(45deg, #8C4500, #D35400);">
+                            <h2 class="fw-bold display-6 mb-2">¡Martes de 2x1!</h2>
+                            <p class="fs-5 mb-4">Lleva dos Churrascos Italianos y paga solo uno.</p>
+                            <button class="btn btn-light rounded-pill px-4 fw-bold text-dark shadow-sm text-nowrap">Pedir promoción</button>
+                        </div>
+                    </div>
 
-<!-- Bloque central: Pedidos en diagonal -->
-    <section class="col-lg-9">
-    <div class="bg-white rounded-4 shadow-sm p-4 h-100">
-        <h5 class="fw-bold mb-4">Pedido</h5>
-        <div class="row g-4">
+                    <!-- Slide 2: Nuevo Producto -->
+                    <div class="carousel-item">
+                        <div class="w-100 d-flex flex-column align-items-center justify-content-center text-white text-center px-4" style="min-height: 280px; background: linear-gradient(45deg, #27ae60, #1abc9c);">
+                            <h2 class="fw-bold display-6 mb-2">Nuevo: Not Burger</h2>
+                            <p class="fs-5 mb-4">Descubre nuestra nueva opción 100% plant-based en masa madre.</p>
+                            <a href="#not-burger" class="btn btn-light rounded-pill px-4 fw-bold text-dark shadow-sm text-nowrap">Descubrir</a>
+                        </div>
+                    </div>
+                    
+                    <!-- Slide 3: Promoción Especial con Imagen de Fondo -->
+                    <div class="carousel-item">
+                        <!-- Imagen de fondo -->
+                        <img src="imagenes/Carrusel/images.jfif" class="d-block w-100 object-fit-cover" style="height: 280px;" alt="Combo Estudiantes UNAB">
+                        
+                        <!-- Capa superior con el texto y botón -->
+                        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center text-white text-center px-4" style="background-color: rgba(0, 0, 0, 0.6);">
+                            <h2 class="fw-bold display-6 mb-2">Combo Estudiantes UNAB</h2>
+                            <p class="fs-5 mb-4">Muestra tu credencial universitaria y obtén una bebida gratis con tu sándwich.</p>
+                            <!-- CORRECCIÓN: Se eliminó w-25 -->
+                            <a href="#not-burger" class="btn btn-light rounded-pill px-4 fw-bold text-dark shadow-sm text-nowrap">Descubrir</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-bs-target="#carruselPromociones" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 
-        <!-- Columna 1 -->
-        <div class="col-md-6">
-            
-            <!-- Card 1 -->
-            <div class="card shadow-sm rounded-4 border-0 mb-4">
-            <div class="row g-0">
-                <div class="col-4">
-                <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
-                    <span class="text-muted small">IMG</span>
-                </div>
-                </div>
-                <div class="col-8">
-                <div class="card-body py-2">
-                    <h6 class="card-title fw-semibold mb-1">Nombre del plato</h6>
-                    <p class="card-text text-muted small mb-0">Breve descripción del producto y sus ingredientes principales.</p>
-                </div>
-                </div>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carruselPromociones" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                </button>
             </div>
-            <div class="card-footer bg-white border-0 pt-0">
-                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 1</span>
-                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 2</span>
-                <span class="badge rounded-pill bg-light text-dark border">Opción 3</span>
-            </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="card shadow-sm rounded-4 border-0 mt-5">
-            <div class="row g-0">
-                <div class="col-4">
-                <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
-                    <span class="text-muted small">IMG</span>
-                </div>
-                </div>
-                <div class="col-8">
-                <div class="card-body py-2">
-                    <h6 class="card-title fw-semibold mb-1">Nombre del plato</h6>
-                    <p class="card-text text-muted small mb-0">Breve descripción del producto y sus ingredientes principales.</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-footer bg-white border-0 pt-0">
-                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 4</span>
-                <span class="badge rounded-pill bg-light text-dark border">Opción 5</span>
-            </div>
-            </div>
-
         </div>
 
-        <!-- Columna 2 (desplazada hacia abajo para efecto diagonal) -->
-        <div class="col-md-6 mt-5 mt-md-0">
+        <div class="container">
+            <div class="row g-4 py-4">
 
-            <!-- Card 3 -->
-            <div class="card shadow-sm rounded-4 border-0 mb-4 mt-md-5">
-            <div class="row g-0">
-                <div class="col-4">
-                <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
-                    <span class="text-muted small">IMG</span>
-                </div>
-                </div>
-                <div class="col-8">
-                <div class="card-body py-2">
-                    <h6 class="card-title fw-semibold mb-1">Nombre del plato</h6>
-                    <p class="card-text text-muted small mb-0">Breve descripción del producto y sus ingredientes principales.</p>
-                </div>
-                </div>
-            </div>
-            <div class="card-footer bg-white border-0 pt-0">
-                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 1</span>
-                <span class="badge rounded-pill bg-light text-dark border">Opción 2</span>
-            </div>
-            </div>
+                <!-- Panel de Filtros -->
+                <aside class="col-lg-3">
+                    <!-- Botón para mostrar filtros solo en móviles -->
+                    <div class="d-lg-none mb-3">
+                        <button class="btn btn-outline-dark w-100 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#panelFiltrosMobile">
+                            Filtros de Búsqueda
+                        </button>
+                    </div>
 
-            <!-- Card 4 -->
-            <div class="card shadow-sm rounded-4 border-0 mt-5">
-            <div class="row g-0">
-                <div class="col-4">
-                <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
-                    <span class="text-muted small">IMG</span>
-                </div>
-                </div>
-                <div class="col-8">
-                <div class="card-body py-2">
-                    <h6 class="card-title fw-semibold mb-1">Nombre del plato</h6>
-                    <p class="card-text text-muted small mb-0">Breve descripción del producto y sus ingredientes principales.</p>
-                </div>
+                    <!-- Contenedor de filtros -->
+                    <div class="collapse d-lg-block" id="panelFiltrosMobile">
+                        <div class="Panel_filtro rounded-4 shadow-sm p-4 h-100">
+                            <h5 class="fw-bold mb-4 d-none d-lg-block">Filtros</h5>
+                            
+                            <!-- Acordeón de filtros modificado (se eliminó accordion-flush y se agregó d-flex flex-column gap-3) -->
+                                <div class="accordion d-flex flex-column gap-3" id="acordeonFiltros">
+                                    
+                                    <!-- 1. El Pan -->
+                                    <!-- Se agregó border, rounded-3 y overflow-hidden a cada item -->
+                                    <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
+                                        <h2 class="accordion-header">
+                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panPan">
+                                                Tipo de Pan
+                                            </button>
+                                        </h2>
+                                        <div id="panPan" class="accordion-collapse collapse">
+                                            <div class="accordion-body px-3">
+                                                <p class="text-uppercase small fw-semibold mb-1">Clásicos</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="panFrica"><label class="form-check-label" for="panFrica">Pan Frica</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="marraqueta"><label class="form-check-label" for="marraqueta">Marraqueta</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="hallulla"><label class="form-check-label" for="hallulla">Hallulla</label></div>
+                        
+                                                <p class="text-uppercase small fw-semibold mb-1 mt-3">Especiales</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="ciabatta"><label class="form-check-label" for="ciabatta">Ciabatta</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="baguette"><label class="form-check-label" for="baguette">Baguette</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="masaMadre"><label class="form-check-label" for="masaMadre">Pan de Masa Madre</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="focaccia"><label class="form-check-label" for="focaccia">Focaccia</label></div>
+                        
+                                                <p class="text-uppercase small fw-semibold mb-1 mt-3">Ligeros</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="pita"><label class="form-check-label" for="pita">Pan Pita</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="molde"><label class="form-check-label" for="molde">Pan de Molde</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="wrap"><label class="form-check-label" for="wrap">Wrap/Tortilla</label></div>
+                        
+                                                <p class="text-uppercase small fw-semibold mb-1 mt-3">Dietéticos</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="sinGlutenPan"><label class="form-check-label" for="sinGlutenPan">Sin Gluten</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="panKeto"><label class="form-check-label" for="panKeto">Pan Keto</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 2. La Proteína -->
+                                    <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
+                                        <h2 class="accordion-header">
+                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panProteina">
+                                                Tipo de Proteína
+                                            </button>
+                                        </h2>
+                                        <div id="panProteina" class="accordion-collapse collapse">
+                                            <div class="accordion-body px-3">
+                                                <p class="text-uppercase text-muted small fw-semibold mb-1">Vacuno</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="churrasco"><label class="form-check-label" for="churrasco">Churrasco</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="mechada"><label class="form-check-label" for="mechada">Mechada</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="hamburguesaRes"><label class="form-check-label" for="hamburguesaRes">Hamburguesa de Res</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="asiento"><label class="form-check-label" for="asiento">Asiento</label></div>
+                        
+                                                <p class="text-uppercase text-muted small fw-semibold mb-1 mt-3">Cerdo</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="lomito"><label class="form-check-label" for="lomito">Lomito</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="arrollado"><label class="form-check-label" for="arrollado">Arrollado</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="bacon"><label class="form-check-label" for="bacon">Tocino/Bacon</label></div>
+                        
+                                                <p class="text-uppercase text-muted small fw-semibold mb-1 mt-3">Pollo / Ave</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="pechuga"><label class="form-check-label" for="pechuga">Pechuga a la plancha</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="crispy"><label class="form-check-label" for="crispy">Pollo Crispy</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="aveDesmenuzada"><label class="form-check-label" for="aveDesmenuzada">Ave desmenuzada</label></div>
+                        
+                                                <p class="text-uppercase text-muted small fw-semibold mb-1 mt-3">Del Mar</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="atun"><label class="form-check-label" for="atun">Atún</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="salmon"><label class="form-check-label" for="salmon">Salmón ahumado</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="pescadoFrito"><label class="form-check-label" for="pescadoFrito">Pescado frito</label></div>
+                        
+                                                <p class="text-uppercase text-muted small fw-semibold mb-1 mt-3">Plant-Based</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="hamburguesaSoya"><label class="form-check-label" for="hamburguesaSoya">Hamburguesa de Soya</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="notMeat"><label class="form-check-label" for="notMeat">Not Meat</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="falafel"><label class="form-check-label" for="falafel">Falafel</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="tofu"><label class="form-check-label" for="tofu">Tofu</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="seitan"><label class="form-check-label" for="seitan">Seitán</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="croquetaLegumbres"><label class="form-check-label" for="croquetaLegumbres">Croqueta de Legumbres</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 3. Estilos Clásicos -->
+                                    <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
+                                        <h2 class="accordion-header">
+                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panEstilos">
+                                                Estilos de Sandwich
+                                            </button>
+                                        </h2>
+                                        <div id="panEstilos" class="accordion-collapse collapse">
+                                            <div class="accordion-body px-3">
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="italiano"><label class="form-check-label" for="italiano">Italiano</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="chacarero"><label class="form-check-label" for="chacarero">Chacarero</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="luco"><label class="form-check-label" for="luco">Luco</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="aLoPobre"><label class="form-check-label" for="aLoPobre">A lo Pobre</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="barrosJarpa"><label class="form-check-label" for="barrosJarpa">Barros Jarpa / Ali</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="chemilico"><label class="form-check-label" for="chemilico">Chemilico</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- 4. Ingredientes Clave -->
+                                    <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
+                                        <h2 class="accordion-header">
+                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panIngredientes">
+                                                Por Ingredientes
+                                            </button>
+                                        </h2>
+                                        <div id="panIngredientes" class="accordion-collapse collapse">
+                                            <div class="accordion-body px-3 Filtro_opciones">
+                                                <p class="text-uppercase text-muted small fw-semibold mb-1">Vegetales</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="palta"><label class="form-check-label" for="palta">Palta</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="tomate"><label class="form-check-label" for="tomate">Tomate</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="lechuga"><label class="form-check-label" for="lechuga">Lechuga</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="cebolla"><label class="form-check-label" for="cebolla">Cebolla</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="porotosVerdes"><label class="form-check-label" for="porotosVerdes">Porotos verdes</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="pepinillos"><label class="form-check-label" for="pepinillos">Pepinillos</label></div>
+                        
+                                                <p class="text-uppercase text-muted small fw-semibold mb-1 mt-3">Quesos</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="quesoGouda"><label class="form-check-label" for="quesoGouda">Queso Gouda/Fundido</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="cheddar"><label class="form-check-label" for="cheddar">Cheddar</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="quesoCrema"><label class="form-check-label" for="quesoCrema">Queso Crema</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="quesoAzul"><label class="form-check-label" for="quesoAzul">Queso Azul</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="quesoVegano"><label class="form-check-label" for="quesoVegano">Queso Vegano</label></div>
+                        
+                                                <p class="text-uppercase text-muted small fw-semibold mb-1 mt-3">Extras</p>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="huevoFrito"><label class="form-check-label" for="huevoFrito">Huevo frito</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="champinones"><label class="form-check-label" for="champinones">Champiñones</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="jalapenos"><label class="form-check-label" for="jalapenos">Jalapeños / Ají verde</label></div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            <button class="btn w-100 mt-4 text-dark rounded-pill"  type="button" id ="btnAplicarFiltros">Aplicar filtros</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Bloque Pedidos -->
+                <section class="col-lg-9">
+                    <div class="Panel_pedido rounded-4 shadow-sm p-4 h-100">
+                        <h2 class="fw-bold mb-4">Sándwiches</h2>
+
+                        <div class="row row-cols-1 g-4 pedido-grid">
+
+                            <!-- Producto 1: Pollito Koreano -->
+                            <div class="col">
+                                <div class="card shadow-sm rounded-4 bloque_producto">
+                                    <div class="row g-0">
+                                        <div class="col-4 col-lg-3">
+                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                               <img src="imagenes/Sandwiches/korean-chicken-sandwich.jpg" alt="Pollito Koreano" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-lg-5">
+                                            <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h6 class="card-title fw-bold mb-1">Pollito Koreano</h6>
+                                                    <p class="card-text text-muted small mb-2 lh-sm">Pollo crocante, glaseado de miel y especias, kimchi, pepinillos, cilantro fresco y mayonesa.</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                    <div>
+                                                        <h6 class="text-muted small mb-0">Precio</h6>
+                                                        <p class="mb-0 fw-bold fs-6">$ 10.950</p>
+                                                    </div>
+                                                    <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0; background-color:#8C4500 ;">
+                                                        <span class="fs-5 lh-1 mb-0">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="d-lg-none m-0 text-muted opacity-25">
+                                        <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Marraqueta</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Pollo Crispy</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Pepinillos</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Producto 2: El revolucionario -->
+                            <div class="col">
+                                <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                    <div class="row g-0">
+                                        <div class="col-4 col-lg-3">
+                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                                <img src="imagenes/Sandwiches/MECHADA.png" alt="Mechada" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-lg-5">
+                                            <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h6 class="card-title fw-bold mb-1">El revolucionario</h6>
+                                                    <p class="card-text text-muted small mb-2 lh-sm">Carne mechada braseada, queso mantecoso, cebolla caramelizada, tomates confitados y lechuga.</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                    <div>
+                                                        <h6 class="text-muted small mb-0">Precio</h6>
+                                                        <p class="mb-0 fw-bold fs-6 ">$ 11.950</p>
+                                                    </div>
+                                                    <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                        <span class="fs-5 lh-1 mb-0">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="d-lg-none m-0 text-muted opacity-25">
+                                        <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Ciabatta</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Mechada</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Queso Fundido</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Cebolla</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Producto 3: Churrasco Italiano -->
+                            <div class="col">
+                                <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                    <div class="row g-0">
+                                        <div class="col-4 col-lg-3">
+                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                                <img src="imagenes/Sandwiches/Churrasco_Italiano1.jpg" alt="Churrasco Italiano" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-lg-5">
+                                            <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h6 class="card-title fw-bold mb-1">Churrasco Italiano</h6>
+                                                    <p class="card-text text-muted small mb-2 lh-sm">Finas láminas de vacuno a la plancha, palta hass molida, tomate fresco y mayonesa casera.</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                    <div>
+                                                        <h6 class="text-muted small mb-0">Precio</h6>
+                                                        <p class="mb-0 fw-bold fs-6">$ 6.500</p>
+                                                    </div>
+                                                    <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                        <span class="fs-5 lh-1 mb-0">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="d-lg-none m-0 text-muted opacity-25">
+                                        <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Vacuno</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Italiano</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Palta</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Pan Frica</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Producto 4: Mechada Barros Luco -->
+                            <div class="col">
+                                <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                    <div class="row g-0">
+                                        <div class="col-4 col-lg-3">
+                                            <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                                <img src="imagenes/Sandwiches/Barros-luco01.jpg" alt="Barros Luco" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-lg-5">
+                                            <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h6 class="card-title fw-bold mb-1">Mechada Barros Luco</h6>
+                                                    <p class="card-text text-muted small mb-2 lh-sm">Carne mechada deshilachada en su jugo con abundante queso mantecoso fundido.</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                    <div>
+                                                        <h6 class="text-muted small mb-0">Precio</h6>
+                                                        <p class="mb-0 fw-bold fs-6 ">$ 7.200</p>
+                                                    </div>
+                                                    <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                        <span class="fs-5 lh-1 mb-0">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="d-lg-none m-0 text-muted opacity-25">
+                                        <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Mechada</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Luco</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Queso Fundido</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Marraqueta</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Producto 5: Pollo Crispy BBQ -->
+                            <div class="col">
+                                <div class="card shadow-sm rounded-4  bg-opacity-50 bloque_producto">
+                                    <div class="row g-0">
+                                        <div class="col-4 col-lg-3">
+                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                                <img src="imagenes/Sandwiches/KFC-CRISPY-BBQ.webp" alt="Pollo Crispy" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-lg-5">
+                                            <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h6 class="card-title fw-bold mb-1">Pollo Crispy BBQ</h6>
+                                                    <p class="card-text text-muted small mb-2 lh-sm">Pechuga de pollo frita y crujiente, tocino ahumado, queso cheddar, pepinillos y salsa BBQ.</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                    <div>
+                                                        <h6 class="text-muted small mb-0">Precio</h6>
+                                                        <p class="mb-0 fw-bold fs-6 ">$ 6.800</p>
+                                                    </div>
+                                                    <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                        <span class="fs-5 lh-1 mb-0">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="d-lg-none m-0 text-muted opacity-25">
+                                        <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Pollo</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Tocino</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Cheddar</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Pan Brioche</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Pepinillos</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Producto 6: Lomito Chacarero -->
+                            <div class="col">
+                                <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                    <div class="row g-0">
+                                        <div class="col-4 col-lg-3">
+                                            <div class= "h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                                <img src="imagenes/Sandwiches/Chacarero-edit.jpg" alt="Chacarero" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-lg-5">
+                                            <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h6 class="card-title fw-bold mb-1">Lomito Chacarero</h6>
+                                                    <p class="card-text text-muted small mb-2 lh-sm">Finas lonjas de lomo de cerdo horneado, porotos verdes, tomate, ají verde y mayonesa.</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                    <div>
+                                                        <h6 class="text-muted small mb-0">Precio</h6>
+                                                        <p class="mb-0 fw-bold fs-6">$ 6.900</p>
+                                                    </div>
+                                                    <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                        <span class="fs-5 lh-1 mb-0">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="d-lg-none m-0 text-muted opacity-25">
+                                        <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Cerdo</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Chacarero</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Porotos Verdes</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Ají Verde</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Pan Frica</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Producto 7: Not Burger Vegana -->
+                            <div class="col" id="not-burger">
+                                <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                    <div class="row g-0">
+                                        <div class="col-4 col-lg-3">
+                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                               <img src="imagenes/Sandwiches/temp_image_20210806_214030_30d8e9a7-911f-47ad-bcbe-0b257e6a63d4-Cropped.jpg" alt="Not Burger" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-lg-5">
+                                            <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h6 class="card-title fw-bold mb-1">Not Burger Vegana</h6>
+                                                    <p class="card-text text-muted small mb-2 lh-sm">Hamburguesa plant-based con palta, tomate y mayonesa 100% vegana en pan de masa madre.</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                    <div>
+                                                        <h6 class="text-muted small mb-0">Precio</h6>
+                                                        <p class="mb-0 fw-bold fs-6">$ 7.500</p>
+                                                    </div>
+                                                    <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                        <span class="fs-5 lh-1 mb-0">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="d-lg-none m-0 text-muted opacity-25">
+                                        <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <!-- Etiqueta Vegano con color verde destacado -->
+                                                <span class="badge rounded-pill bg-success bg-opacity-75 text-dark border px-3 py-2 shadow-sm">Vegano</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Not Meat</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Italiano</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Masa Madre</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    <!-- Título de la Sección -->
+                        <h5 class="fw-bold mb-4 mt-5">Bebidas</h5>
+
+                        <!-- Contenedor de Bebidas: 1 columna en móvil, 2 columnas en PC -->
+                        <div class="row row-cols-1 row-cols-md-2 g-3">
+
+                                <!-- Bebida 1: Coca-Cola -->
+                                <div class="col">
+                                    <div class="card shadow-sm rounded-4 h-100 bloque_producto">
+                                        <div class="row g-0 h-100">
+                                            <!-- Imagen más compacta -->
+                                            <div class="col-4">
+                                                <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                                    <img src="imagenes/Bebestibles/istockphoto-458120031-612x612.jpg" alt="Coca-Cola" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                                </div>
+                                            </div>
+                                            <!-- Información y Botón -->
+                                            <div class="col-8">
+                                                <div class="card-body p-3 h-100 d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h6 class="card-title fw-bold mb-1">Coca-Cola Original</h6>
+                                                        <p class="card-text text-muted small mb-0 lh-sm">Lata 350ml</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                        <p class="mb-0 fw-bold fs-6">$ 1.500</p>
+                                                        <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
+                                                            <span class="fs-5 lh-1 mb-0">+</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bebida 2: Coca-Cola Zero -->
+                                <div class="col">
+                                    <div class="card shadow-sm rounded-4 h-100 bloque_producto">
+                                        <div class="row g-0 h-100">
+                                            <div class="col-4">
+                                                <div class=" h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                                    <img src="imagenes/Bebestibles/coca-cola-sazucar-lata-6x350-cc.jpg" alt="Coca-Cola Zero" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="card-body p-3 h-100 d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h6 class="card-title fw-bold mb-1">Coca-Cola Zero</h6>
+                                                        <p class="card-text text-muted small mb-0 lh-sm">Lata 350ml</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                        <p class="mb-0 fw-bold fs-6">$ 1.500</p>
+                                                        <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
+                                                            <span class="fs-5 lh-1 mb-0">+</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bebida 3: Jugo Natural -->
+                                <div class="col">
+                                    <div class="card shadow-sm rounded-4 h-100 bloque_producto">
+                                        <div class="row g-0 h-100">
+                                            <div class="col-4">
+                                                <div class=" h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                                    <img src="imagenes/Bebestibles/jugo-de-naranja-destacado.jpg" alt="Juego Naranja" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="card-body p-3 h-100 d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h6 class="card-title fw-bold mb-1">Jugo de Naranja</h6>
+                                                        <p class="card-text text-muted small mb-0 lh-sm">Natural, recién exprimido 400ml</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                        <p class="mb-0 fw-bold fs-6">$ 2.900</p>
+                                                        <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
+                                                            <span class="fs-5 lh-1 mb-0">+</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Bebida 4: Cerveza -->
+                                <div class="col">
+                                    <div class="card shadow-sm rounded-4 h-100 bloque_producto">
+                                        <div class="row g-0 h-100">
+                                            <div class="col-4">
+                                                <div class= h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                                    <img src="imagenes/Bebestibles/frontal-5158.webp" alt="Austral Calafate" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="card-body p-3 h-100 d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h6 class="card-title fw-bold mb-1">Cerveza Austral Calafate</h6>
+                                                        <p class="card-text text-muted small mb-0 lh-sm">Botella 330ml</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                        <p class="mb-0 fw-bold fs-6">$ 3.200</p>
+                                                        <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
+                                                            <span class="fs-5 lh-1 mb-0">+</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
                 </div>
             </div>
-            <div class="card-footer bg-white border-0 pt-0">
-                <span class="badge rounded-pill bg-light text-dark border me-1">Opción 3</span>
-                <span class="badge rounded-pill bg-light text-dark border">Opción 5</span>
-            </div>
-            </div>
+    </main>
 
-        </div>
-
-        </div>
-    </div>
-    </section>
-    <!-- Footer -->    
-
+    <!-- Footer -->
+    
+    
 </body>
 </html>
