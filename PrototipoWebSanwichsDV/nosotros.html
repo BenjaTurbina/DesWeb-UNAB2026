@@ -1,49 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src = "acciones_pedir.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-    <title>SandwicDV - Nosotros</title>
+    <title>SandwichDV - Nosotros</title>
 </head>
 <body>
-<body>
-    <!-- Navbar -->
-    <nav class= "navbar navbar-expand-lg  shadow-sm">
-        <div class = "container-fluid">
-        <!-- Logo -->
-            <img src="logo.jpg" alt="SandwicDV" height="80" class="d-inline-block align-text-top logo_empresa">
-        <!-- Links -->
-        <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-            <a class="nav-link active" href="Pedir.html">Pedir</a>
-            </li>
-            <li class="nav-item ">
-            <a class="nav-link " href="nosotros.html">Nosotros</a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="sucursales.html">Sucursales</a>
-            </li>
-        </ul>
-            <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-            <!-- Botón Carrito -->
-                <button class="btn d-flex align-items-center justify-content-center" 
-                    type="button" aria-label="Ver carrito">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                    </svg>
-                </button>
-                <!-- Botón Perfil (estilo Messenger) -->
-                <button class="btn p-2 d-flex align-items-center justify-content-center" 
-                    type="button" aria-label="Perfil de usuario">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
-                    </svg>
-                </button>
+   <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
+        <div class="container-fluid">
+            
+            <!-- Logo -->
+            <a class="navbar-brand" href="#">
+                <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
+            </a>
+            
+            <!-- Controles de la derecha -->
+            <div class="d-flex align-items-center order-lg-3 ms-auto gap-1 gap-lg-3">
+               
             </div>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse order-lg-2" id="menuNavegacion">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-5">
+                    <li class="nav-item">
+                        <a class="nav-link" href="Pedir.html">PEDIR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="nosotros.html">NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sucursales.html">SUCURSALES</a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
     </nav>
+
+    <main>
+
+    </main>
+
+    <!-- Footer -->
+        <footer class="footer-oscuro text-white pt-5 pb-4 mt-auto">
+            <div class="container">
+                <div class="row gy-4">
+                    
+                    <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start align-items-center">
+                        <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" class="footer-logo bg-white shadow-sm">
+                    </div>
+
+                    <div class="col-12 col-md-3 text-center text-md-start">
+                        <h5 class="fw-bold mb-3">Conócenos</h5>
+                        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                            <li><a href="sucursales.html" class="text-white text-decoration-none footer-link">Sucursales</a></li>
+                            <li><a href="#" class="text-white text-decoration-none footer-link">Términos y condiciones</a></li>
+                            <li><a href="#" class="text-white text-decoration-none footer-link">Política de privacidad</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-3 text-center text-md-start">
+                        <h5 class="fw-bold mb-3">Redes sociales</h5>
+                        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                            <li><a href="https://www.instagram.com" class="text-white text-decoration-none footer-link">Instagram</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-3 text-center text-md-start">
+                        <h5 class="fw-bold mb-3">Mi cuenta</h5>
+                        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                            <li><a href="Pedir.html" class="text-white text-decoration-none footer-link">Pedir</a></li>
+                            <li><a href="login.html" class="text-white text-decoration-none footer-link">Iniciar sesión</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
+    
+
 </body>
 </html>

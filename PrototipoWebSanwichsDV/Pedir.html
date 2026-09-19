@@ -10,50 +10,96 @@
     <title>SandwichDV - Pedir</title>
 </head>
 <body>
-    <!-- Navbar Responsivo -->
-    <nav class="navbar navbar-expand-lg shadow-sm">
+   <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
         <div class="container-fluid">
+            
             <!-- Logo -->
             <a class="navbar-brand" href="#">
                 <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
             </a>
-            <!-- Botón Hamburguesa para móviles -->
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Alternar navegación">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Links y Botones colapsables -->
-            <div class="collapse navbar-collapse" id="menuNavegacion">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 text-center">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="Pedir.html">Pedir</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="nosotros.html">Nosotros</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="sucursales.html">Sucursales</a>
-                    </li>
-                </ul>
-           <div class="d-flex align-items-center gap-3 mt-3 mt-lg-0">
-            <!-- Botón Carrito -->
-                <button class="btn d-flex align-items-center justify-content-center" 
-                    type="button" aria-label="Ver carrito">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            
+            <!-- Controles de la derecha -->
+            <div class="d-flex align-items-center order-lg-3 ms-auto gap-1 gap-lg-3">
+                
+                <!-- Boton Carrito -->
+                <button class="btn p-2 d-flex align-items-center justify-content-center text-dark position-relative" type="button" aria-label="Ver carrito" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="35" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                     </svg>
+                    <span id="contador-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" style="font-size: 0.75rem; padding: 0.35em 0.65em;">
+                        0
+                    </span>
                 </button>
-                <!-- Botón Perfil (estilo Messenger) -->
+
+                <!-- Boton Sesion -->
                 <button class="btn p-2 d-flex align-items-center justify-content-center" 
-                    type="button" aria-label="Perfil de usuario">
+                    type="button" aria-label="Perfil de usuario"
+                    data-bs-toggle="modal" data-bs-target="#perfilModal">
                     <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                     </svg>
                 </button>
+
             </div>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse order-lg-2" id="menuNavegacion">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-5">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="Pedir.html">PEDIR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sucursales.html">SUCURSALES</a>
+                    </li>
+                </ul>
             </div>
+
         </div>
     </nav>
+
+    <!-- Pop Outs -->
+
+        <!-- Carrito -->
+        <div class="offcanvas offcanvas-end bg-white" tabindex="-1" id="carritoOffcanvas" aria-labelledby="carritoOffcanvasLabel">
+            <div class="offcanvas-header border-bottom">
+                <h5 class="offcanvas-title fw-bold" id="carritoOffcanvasLabel">Mi Carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Cerrar"></button>
+            </div>
+            <div class="offcanvas-body d-flex flex-column">
+
+                <div id="contenido-carrito" class="flex-grow-1">
+                    <p class="text-muted text-center mt-5">Tu carrito está vacío.</p>
+                </div>
+            
+                <div class="mt-auto border-top pt-3">
+                    <div class="d-flex justify-content-between fw-bold mb-3">
+                        <span>Total:</span>
+                        <span>$ 0</span>
+                    </div>
+                    <button class="btn btn-dark w-100 rounded-pill fw-semibold py-2">Ir a pagar</button>
+                </div>
+            </div>
+        </div>
+        <!-- Formulario de iniciar sesion-->
+        <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content bg-white border-0 shadow rounded-4">
+                    <div class="modal-header border-bottom-0 pb-0">
+                        <h5 class="modal-title fw-bold text-center" id="perfilModalLabel">Mi Cuenta</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body text-center py-4">
+                        <p class="text-muted mb-4">Inicia sesión para guardar tus pedidos favoritos y acelerar tu compra.</p>
+                        <button class=" btn-dark w-100 rounded-pill fw-semibold mb-2 py-2">Iniciar Sesión</button>
+                        <button class=" btn-outline-dark w-100 rounded-pill fw-semibold py-2">Crear Cuenta</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     <!-- Body -->
     <main class="bloque_fondo py-4">
@@ -71,12 +117,12 @@
                 <!-- Contenido de los Slides -->
                 <div class="carousel-inner">
                     
-                    <!-- Slide 1: Promoción Clásica -->
+                    <!-- Slide 1: Promocion Clasica -->
                     <div class="carousel-item active">
                         <div class="w-100 d-flex flex-column align-items-center justify-content-center text-white text-center px-4" style="min-height: 280px; background: linear-gradient(45deg, #8C4500, #D35400);">
                             <h2 class="fw-bold display-6 mb-2">¡Martes de 2x1!</h2>
                             <p class="fs-5 mb-4">Lleva dos Churrascos Italianos y paga solo uno.</p>
-                            <button class="btn btn-light rounded-pill px-4 fw-bold text-dark shadow-sm text-nowrap">Pedir promoción</button>
+                            <button class="btn btn-light rounded-pill px-4 fw-bold text-dark shadow-sm text-nowrap" id ="btnPromo2x1">Pedir promoción</button>
                         </div>
                     </div>
 
@@ -89,25 +135,23 @@
                         </div>
                     </div>
                     
-                    <!-- Slide 3: Promoción Especial con Imagen de Fondo -->
+                    <!-- Slide 3: Promo UNAB-->
                     <div class="carousel-item">
                         <!-- Imagen de fondo -->
                         <img src="imagenes/Carrusel/images.jfif" class="d-block w-100 object-fit-cover" style="height: 280px;" alt="Combo Estudiantes UNAB">
                         
-                        <!-- Capa superior con el texto y botón -->
                         <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center text-white text-center px-4" style="background-color: rgba(0, 0, 0, 0.6);">
                             <h2 class="fw-bold display-6 mb-2">Combo Estudiantes UNAB</h2>
                             <p class="fs-5 mb-4">Muestra tu credencial universitaria y obtén una bebida gratis con tu sándwich.</p>
-                            <!-- CORRECCIÓN: Se eliminó w-25 -->
-                            <a href="#not-burger" class="btn btn-light rounded-pill px-4 fw-bold text-dark shadow-sm text-nowrap">Descubrir</a>
+                            <a class="btn btn-light rounded-pill px-4 fw-bold text-dark shadow-sm text-nowrap">Descubrir</a>
                         </div>
                     </div>
                 </div>
                 
                 <button class="carousel-control-prev" type="button" data-bs-target="#carruselPromociones" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-
                 </button>
+
                 <button class="carousel-control-next" type="button" data-bs-target="#carruselPromociones" data-bs-slide="next">
                     <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 </button>
@@ -135,7 +179,6 @@
                                 <div class="accordion d-flex flex-column gap-3" id="acordeonFiltros">
                                     
                                     <!-- 1. El Pan -->
-                                    <!-- Se agregó border, rounded-3 y overflow-hidden a cada item -->
                                     <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
                                         <h2 class="accordion-header">
                                             <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panPan">
@@ -152,7 +195,7 @@
                                                 <p class="text-uppercase small fw-semibold mb-1 mt-3">Especiales</p>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="ciabatta"><label class="form-check-label" for="ciabatta">Ciabatta</label></div>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="baguette"><label class="form-check-label" for="baguette">Baguette</label></div>
-                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="masaMadre"><label class="form-check-label" for="masaMadre">Pan de Masa Madre</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="masaMadre"><label class="form-check-label" for="masaMadre">Masa Madre</label></div>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="focaccia"><label class="form-check-label" for="focaccia">Focaccia</label></div>
                         
                                                 <p class="text-uppercase small fw-semibold mb-1 mt-3">Ligeros</p>
@@ -546,25 +589,64 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- Producto 8: Guaton Loyola -->                     
+                            <div class="col">
+                                <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                    <div class="row g-0">
+                                        <div class="col-4 col-lg-3">
+                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px; max-height: 180px;">
+                                               <img src="imagenes/Sandwiches/rWAYQ5rJwMqgErSzJ-300-x.webp" alt="Not Burger" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                            </div>
+                                        </div>
+                                        <div class="col-8 col-lg-5">
+                                            <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                                <div>
+                                                    <h6 class="card-title fw-bold mb-1">Guaton Loyola</h6>
+                                                    <p class="card-text text-muted small mb-2 lh-sm">Doble hamburguesa, queso cheddar y queso mantecoso, tocino ahumado de la casa, cebollas caramelizadas al vino tinto, pepinillos, lechuga, tomate y salsa dijonesa.</p>
+                                                </div>
+                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                    <div>
+                                                        <h6 class="text-muted small mb-0">Precio</h6>
+                                                        <p class="mb-0 fw-bold fs-6">$ 8.500</p>
+                                                    </div>
+                                                    <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                        <span class="fs-5 lh-1 mb-0">+</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr class="d-lg-none m-0 text-muted opacity-25">
+                                        <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                            <div class="d-flex flex-wrap gap-2">
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Hamburgesa de Res</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Tocino</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Cebolla</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Focaccia</span>
+                                                <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Lechuga</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+                        
+                    <!-- Bebidas -->
+                        <h2 class="fw-bold mb-4 mt-5">Bebidas</h2>
 
-                    <!-- Título de la Sección -->
-                        <h5 class="fw-bold mb-4 mt-5">Bebidas</h5>
-
-                        <!-- Contenedor de Bebidas: 1 columna en móvil, 2 columnas en PC -->
+                        <!-- Contenedor de Bebidas -->
                         <div class="row row-cols-1 row-cols-md-2 g-3">
 
                                 <!-- Bebida 1: Coca-Cola -->
                                 <div class="col">
                                     <div class="card shadow-sm rounded-4 h-100 bloque_producto">
                                         <div class="row g-0 h-100">
-                                            <!-- Imagen más compacta -->
                                             <div class="col-4">
                                                 <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
                                                     <img src="imagenes/Bebestibles/istockphoto-458120031-612x612.jpg" alt="Coca-Cola" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                                 </div>
                                             </div>
-                                            <!-- Información y Botón -->
+                                            <!-- Informacion y Boton -->
                                             <div class="col-8">
                                                 <div class="card-body p-3 h-100 d-flex flex-column justify-content-between">
                                                     <div>
@@ -664,7 +746,60 @@
                                     </div>
                                 </div>
 
+                                <!-- Bebida 5: Sprite -->
+                                <div class="col">
+                                    <div class="card shadow-sm rounded-4 h-100 bloque_producto">
+                                        <div class="row g-0 h-100">
+                                            <div class="col-4">
+                                                <div class= "h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                                    <img src="imagenes/Bebestibles/4835_0_sprite-lata-350cc.png" alt="Sprite" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="card-body p-3 h-100 d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h6 class="card-title fw-bold mb-1"> Sprite Original</h6>
+                                                        <p class="card-text text-muted small mb-0 lh-sm">Lata 350ml</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                        <p class="mb-0 fw-bold fs-6">$ 1.500</p>
+                                                        <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
+                                                            <span class="fs-5 lh-1 mb-0">+</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                
+                                <!-- Bebida 6: Fanta -->
+                                <div class="col">
+                                    <div class="card shadow-sm rounded-4 h-100 bloque_producto">
+                                        <div class="row g-0 h-100">
+                                            <div class="col-4">
+                                                <div class= "h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                                    <img src="imagenes/Bebestibles/1110073.png" alt="Fanta" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                                </div>
+                                            </div>
+                                            <div class="col-8">
+                                                <div class="card-body p-3 h-100 d-flex flex-column justify-content-between">
+                                                    <div>
+                                                        <h6 class="card-title fw-bold mb-1">Fanta Original</h6>
+                                                        <p class="card-text text-muted small mb-0 lh-sm">Lata 350ml</p>
+                                                    </div>
+                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                        <p class="mb-0 fw-bold fs-6">$ 1.500</p>
+                                                        <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
+                                                            <span class="fs-5 lh-1 mb-0">+</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
+                            
                         </div>
                     </section>
                 </div>
@@ -672,7 +807,41 @@
     </main>
 
     <!-- Footer -->
-    
+        <footer class="footer-oscuro text-white pt-5 pb-4 mt-auto">
+            <div class="container">
+                <div class="row gy-4">
+                    
+                    <div class="col-12 col-md-3 d-flex justify-content-center justify-content-md-start align-items-center">
+                        <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" class="footer-logo bg-white shadow-sm">
+                    </div>
+
+                    <div class="col-12 col-md-3 text-center text-md-start">
+                        <h5 class="fw-bold mb-3">Conócenos</h5>
+                        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                            <li><a href="sucursales.html" class="text-white text-decoration-none footer-link">Sucursales</a></li>
+                            <li><a href="#" class="text-white text-decoration-none footer-link">Términos y condiciones</a></li>
+                            <li><a href="#" class="text-white text-decoration-none footer-link">Política de privacidad</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-3 text-center text-md-start">
+                        <h5 class="fw-bold mb-3">Redes sociales</h5>
+                        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                            <li><a href="https://www.instagram.com" class="text-white text-decoration-none footer-link">Instagram</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="col-12 col-md-3 text-center text-md-start">
+                        <h5 class="fw-bold mb-3">Mi cuenta</h5>
+                        <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
+                            <li><a href="Pedir.html" class="text-white text-decoration-none footer-link">Pedir</a></li>
+                            <li><a href="login.html" class="text-white text-decoration-none footer-link">Iniciar sesión</a></li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </footer>
     
 </body>
 </html>
