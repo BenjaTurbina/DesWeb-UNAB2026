@@ -72,6 +72,14 @@ def productos():
                 "fecha": "13-06-2025",
                 "precio": 18000
             },
+            {
+                "id": 8,
+                "nombre": "Wow Forever",
+                "desarollador": "Blizzard",
+                "editor": "Blizzard",
+                "fecha": "04-11-2026",
+                "precio": 22100
+            },
         ]    
     }
 

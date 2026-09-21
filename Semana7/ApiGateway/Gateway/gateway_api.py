@@ -21,4 +21,5 @@ async def orders():
         response = await client.get(
             f"{BACKEND_URL}/pedidos"
         )
+
     return response.json()
