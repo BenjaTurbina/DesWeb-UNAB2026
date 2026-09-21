@@ -15,16 +15,15 @@
         <div class="container-fluid">
             
             <!-- Logo -->
-            <a class="navbar-brand" href="#">
-                <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
-            </a>
+
+            <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
             
             <!-- Controles de la derecha -->
             <div class="d-flex align-items-center order-lg-3 ms-auto gap-1 gap-lg-3">
                 
                 <!-- Boton Carrito -->
                 <button class="btn p-2 d-flex align-items-center justify-content-center text-dark position-relative" type="button" aria-label="Ver carrito" data-bs-toggle="offcanvas" data-bs-target="#carritoOffcanvas">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="35" fill="currentColor" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="30" fill="currentColor" viewBox="0 0 16 16">
                         <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
                     </svg>
                     <span id="contador-carrito" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger d-none" style="font-size: 0.75rem; padding: 0.35em 0.65em;">
@@ -33,19 +32,21 @@
                 </button>
 
                 <!-- Boton Sesion -->
-                <button class="btn p-2 d-flex align-items-center justify-content-center" 
-                    type="button" aria-label="Perfil de usuario"
-                    data-bs-toggle="modal" data-bs-target="#perfilModal">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" viewBox="0 0 16 16">
+                <button class="btn p-2 d-flex align-items-center justify-content-center" type="button" aria-label="Perfil de usuario" data-bs-toggle="modal" data-bs-target="#perfilModal">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                     </svg>
+                </button>
+
+                <button class="navbar-toggler border-0 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Alternar navegación">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
 
             </div>
 
             <!-- Links -->
             <div class="collapse navbar-collapse order-lg-2" id="menuNavegacion">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-5">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-lg-5 text-center mt-3 mt-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" href="Pedir.html">PEDIR</a>
                     </li>
@@ -105,7 +106,7 @@
     <main class="bloque_fondo py-4">
 
     <!-- Carrusel de Promociones -->
-        <div class="container mt-4 mb-2">
+        <div class="container mt-4 mb-2" id="Sandiwch">
             <div id="carruselPromociones" class="carousel slide rounded-4 overflow-hidden shadow-sm" data-bs-ride="carousel">
                 
                 <div class="carousel-indicators">
@@ -231,7 +232,7 @@
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="bacon"><label class="form-check-label" for="bacon">Tocino/Bacon</label></div>
                         
                                                 <p class="text-uppercase text-muted small fw-semibold mb-1 mt-3">Pollo / Ave</p>
-                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="pechuga"><label class="form-check-label" for="pechuga">Pechuga a la plancha</label></div>
+                                                <div class="form-check"><input class="form-check-input" type="checkbox" id="pechuga"><label class="form-check-label" for="pechuga">Pollo</label></div>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="crispy"><label class="form-check-label" for="crispy">Pollo Crispy</label></div>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="aveDesmenuzada"><label class="form-check-label" for="aveDesmenuzada">Ave desmenuzada</label></div>
                         
@@ -302,14 +303,14 @@
                                         </div>
                                     </div>
 
-                                </div>
-                            <button class="btn w-100 mt-4 text-dark rounded-pill"  type="button" id ="btnAplicarFiltros">Aplicar filtros</button>
+                                </div>                
+                           <a href="#Sandiwch" class="btn w-100 mt-4 text-dark rounded-pill" id ="btnAplicarFiltros"> Aplicar filtros </a>
                         </div>
                     </div>
                 </aside>
 
                 <!-- Bloque Pedidos -->
-                <section class="col-lg-9">
+                <section class="col-lg-9"> 
                     <div class="Panel_pedido rounded-4 shadow-sm p-4 h-100">
                         <h2 class="fw-bold mb-4">Sándwiches</h2>
 
@@ -630,7 +631,130 @@
                                 </div>
                             </div>
                         </div>
-                        
+                    
+                    <h2 class="fw-bold mb-4 mt-5">Wraps</h2>
+
+                    <div class="row row-cols-1 g-4 pedido-grid mb-5">
+
+                        <!-- Wrap 1: Pollo -->
+                        <div class="col">
+                            <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                <div class="row g-0">
+                                    <div class="col-4 col-lg-3">
+                                        <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px; max-height: 150px;">
+                                            <img src="imagenes/Wraps/images.jfif" alt="Wrap de Pollo" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-8 col-lg-5">
+                                        <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <h6 class="card-title fw-bold mb-1">Wrap de Pollo</h6>
+                                                <p class="card-text text-muted small mb-2 lh-sm">Tiras de pollo crujiente, lechuga fresca, tomate y suave mayonesa casera envueltos en una tortilla tostada.</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div>
+                                                    <h6 class="text-muted small mb-0">Precio</h6>
+                                                    <p class="mb-0 fw-bold fs-6">$ 5.900</p>
+                                                </div>
+                                                <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                    <span class="fs-5 lh-1 mb-0">+</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="d-lg-none m-0 text-muted opacity-25">
+                                    <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Wrap/Tortilla</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Pollo Crispy</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Lechuga</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Tomate</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wrap 2: Falafel Vegano -->
+                        <div class="col">
+                            <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                <div class="row g-0">
+                                    <div class="col-4 col-lg-3">
+                                        <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                            <img src="imagenes/Wraps/Vegan-Baked-Falafel-resize.webp" alt="Wrap de Falafel" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-8 col-lg-5">
+                                        <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <h6 class="card-title fw-bold mb-1">Wrap Falafel Vegano</h6>
+                                                <p class="card-text text-muted small mb-2 lh-sm">Bolitas de falafel horneadas, palta, tomate, lechuga y aderezo de hummus en tortilla de espinaca.</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div>
+                                                    <h6 class="text-muted small mb-0">Precio</h6>
+                                                    <p class="mb-0 fw-bold fs-6">$ 6.200</p>
+                                                </div>
+                                                <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                    <span class="fs-5 lh-1 mb-0">+</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="d-lg-none m-0 text-muted opacity-25">
+                                    <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <span class="badge rounded-pill bg-success bg-opacity-75 text-dark border px-3 py-2 shadow-sm">Vegano</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Wrap/Tortilla</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Falafel</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Palta</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wrap 3: Mechada Queso -->
+                        <div class="col">
+                            <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
+                                <div class="row g-0">
+                                    <div class="col-4 col-lg-3">
+                                        <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px; max-height: 160px;">
+                                            <img src="imagenes/Wraps/8249b22dfca4e8fc258674c71f2e212f.webp" alt="Wrap Mechada" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
+                                        </div>
+                                    </div>
+                                    <div class="col-8 col-lg-5">
+                                        <div class="card-body py-3 h-100 d-flex flex-column justify-content-between">
+                                            <div>
+                                                <h6 class="card-title fw-bold mb-1">Wrap Mechada Luco</h6>
+                                                <p class="card-text text-muted small mb-2 lh-sm">Toda la potencia de nuestra mechada deshilachada envuelta con abundante queso mantecoso fundido.</p>
+                                            </div>
+                                            <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div>
+                                                    <h6 class="text-muted small mb-0">Precio</h6>
+                                                    <p class="mb-0 fw-bold fs-6">$ 6.800</p>
+                                                </div>
+                                                <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 36px; height: 36px; padding: 0;">
+                                                    <span class="fs-5 lh-1 mb-0">+</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr class="d-lg-none m-0 text-muted opacity-25">
+                                    <div class="col-12 col-lg-4 p-3 border-start-lg border-muted">
+                                        <div class="d-flex flex-wrap gap-2">
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Wrap/Tortilla</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Mechada</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Queso Fundido</span>
+                                            <span class="badge rounded-pill bg-white text-dark border px-3 py-2 shadow-sm">Luco</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                     <!-- Bebidas -->
                         <h2 class="fw-bold mb-4 mt-5">Bebidas</h2>
 

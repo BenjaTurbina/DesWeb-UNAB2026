@@ -10,25 +10,26 @@
     <title>SandwichDV - Nosotros</title>
 </head>
 <body>
-   <!-- Navbar -->
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
         <div class="container-fluid">
             
             <!-- Logo -->
-            <a class="navbar-brand" href="#">
-                <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
-            </a>
+            <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
             
             <!-- Controles de la derecha -->
             <div class="d-flex align-items-center order-lg-3 ms-auto gap-1 gap-lg-3">
-               
+                <button class="navbar-toggler border-0 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Alternar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
             </div>
 
             <!-- Links -->
             <div class="collapse navbar-collapse order-lg-2" id="menuNavegacion">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-5">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-lg-5 text-center mt-3 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="Pedir.html">PEDIR</a>
+                        <a class="nav-link " href="Pedir.html">PEDIR</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="nosotros.html">NOSOTROS</a>
@@ -42,8 +43,57 @@
         </div>
     </nav>
 
-    <main>
+    <main class="bloque_fondo py-5">
+        <div class="container">
+            <!-- Fila 1: Historia -->
+            <div class="row align-items-center mb-5 g-4">
+                <div class="col-md-6">
+                    <img src="imagenes/Nosotros/nosotros1.jpg" class="img-fluid rounded-4 shadow-sm w-100" alt="Sobre nosotros 1">
+                </div>
+                <div class="col-md-6">
+                    <div class="p-4 bg-white rounded-4 shadow-sm">
+                        <h2 class="h4 mb-3">Nuestra Historia</h2>
+                        <p class="mb-0">Todo partió con un sueño entre amigos, un proyecto de vida que lleva tomando forma desde 2012, con origen en Recoleta con la frescura de los productos de la Vega Central e inspirado en la tradición chilena. Llevamos el mejor estándar de calidad al plato con una reinterpretación del chef en sándwiches y wraps que transforman el concepto de la comida chilena.</p>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Fila 2: Pasión -->
+            <div class="row align-items-center mb-5 g-4">
+                <div class="col-md-6 order-2 order-md-1">
+                    <div class="p-4 bg-white rounded-4 shadow-sm">
+                        <h2 class="h4 mb-3">Nuestra Pasión</h2>
+                        <p class="mb-0">Ingredientes frescos y recetas artesanales pensadas para cada cliente, con los sabores de Arica a Punta Arenas. Llevamos la tradición de todo Chile a nuestros sándwiches, siempre con productos frescos y locales.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 order-1 order-md-2">
+                    <img src="imagenes/Nosotros/nosotros2.jpg" class="img-fluid rounded-4 shadow-sm w-100" alt="Sobre nosotros 2">
+                </div>
+            </div>
+
+            <!-- Fila 3: Misión y Visión -->
+            <div class="row justify-content-center g-4 mt-2">
+                <!-- Misión -->
+                <div class="col-lg-9 col-12 text-center">
+                    <h3 class="h5 fw-bold text-uppercase mb-3 tracking-wide">Misión</h3>
+                    <div class="p-4 bg-white border border-secondary-subtle rounded-pill shadow-sm">
+                        <p class="mb-0 px-md-4 text-muted">
+                            Brindar a cada comensal una experiencia gastronómica única combinando la tradición culinaria chilena con toques modernos e ingredientes frescos de la más alta calidad, entregando un servicio cercano, rápido y de excelencia.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Visión -->
+                <div class="col-lg-9 col-12 text-center mt-4">
+                    <h3 class="h5 fw-bold text-uppercase mb-3 tracking-wide">Visión</h3>
+                    <div class="p-4 bg-white border border-secondary-subtle rounded-pill shadow-sm">
+                        <p class="mb-0 px-md-4 text-muted">
+                            Ser la sandwichería artesanal referente a nivel nacional, reconocida por rescatar el patrimonio del sabor chileno mediante la innovación culinaria, el apoyo a productores locales y la expansión sostenible.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
     <!-- Footer -->

@@ -10,28 +10,30 @@
     <title>SandwichDV - Sucursales</title>
 </head>
 <body>
-   <!-- Navbar -->
+<!-- Navbar -->
     <nav class="navbar navbar-expand-lg shadow-sm sticky-top">
         <div class="container-fluid">
             
             <!-- Logo -->
-            <a class="navbar-brand" href="#">
-                <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
-            </a>
+            <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
             
             <!-- Controles de la derecha -->
             <div class="d-flex align-items-center order-lg-3 ms-auto gap-1 gap-lg-3">
                 
+                <button class="navbar-toggler border-0 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Alternar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
             </div>
 
             <!-- Links -->
             <div class="collapse navbar-collapse order-lg-2" id="menuNavegacion">
-                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-5">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-lg-5 text-center mt-3 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="Pedir.html">PEDIR</a>
+                        <a class="nav-link " href="Pedir.html">PEDIR</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="nosotros.html">NOSOTROS</a>
+                        <a class="nav-link" href="nosotros.html">NOSOTROS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="sucursales.html">SUCURSALES</a>
@@ -41,10 +43,88 @@
 
         </div>
     </nav>
+    <!-- Bloque -->
+   <main class="bloque_fondo py-5">
+        <div class="container">
+            <h1 class="h3 fw-bold text-center mb-5">Nuestras Sucursales</h1>
 
-    <main>
+            <!-- Sucursal 1 -->
+            <div class="row align-items-center mb-5 g-4 p-4 bg-white rounded-4 shadow-sm">
+                <!-- Info Izquierda -->
+                <div class="col-md-7">
+                    <h2 class="h4 fw-bold text-primary mb-2">Sucursal Recoleta (Casa Matriz)</h2>
+                    <p class="text-muted mb-3">Donde nació nuestra historia, frente al pulso y frescura de la Vega Central.</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><strong>Dirección:</strong> Av. Recoleta 450, Santiago</li>
+                        <li class="mb-2"><strong>Horario:</strong> Lunes a Sábado: 11:30 - 22:00 hrs | Domingo: 12:00 - 20:00 hrs</li>
+                        <li><strong>Teléfono:</strong> +56 9 1234 5678</li>
+                    </ul>
+                </div>
+                <!-- Imagen y Botón Ubicación Derecha -->
+                <div class="col-md-5 d-flex flex-column gap-3">
+                    <img src="imagenes/Sucursales/sucursal1.jpg" class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover" style="height: 180px;" alt="Sucursal Recoleta">
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-outline-dark rounded-pill py-2 d-flex align-items-center justify-content-center gap-2 shadow-sm">
+                        <!-- Icono Pin Ubicación -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>Ver en el mapa</span>
+                    </a>
+                </div>
+            </div>
 
+            <!-- Sucursal 2 -->
+            <div class="row align-items-center mb-5 g-4 p-4 bg-white rounded-4 shadow-sm">
+                <!-- Info Izquierda -->
+                <div class="col-md-7">
+                    <h2 class="h4 fw-bold text-primary mb-2">Sucursal Providencia</h2>
+                    <p class="text-muted mb-3">En pleno corazón urbano para tus almuerzos rápidos y tardes de amigos.</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><strong>Dirección:</strong> Av. Providencia 1240, Providencia</li>
+                        <li class="mb-2"><strong>Horario:</strong> Lunes a Domingo: 12:00 - 23:00 hrs</li>
+                        <li><strong>Teléfono:</strong> +56 9 8765 4321</li>
+                    </ul>
+                </div>
+                <!-- Imagen y Botón Ubicación Derecha -->
+                <div class="col-md-5 d-flex flex-column gap-3">
+                    <img src="imagenes/Sucursales/sucursal2.jpg" class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover" style="height: 180px;" alt="Sucursal Providencia">
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-outline-dark rounded-pill py-2 d-flex align-items-center justify-content-center gap-2 shadow-sm">
+                        <!-- Icono Pin Ubicación -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>Ver en el mapa</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Sucursal 3 -->
+            <div class="row align-items-center g-4 p-4 bg-white rounded-4 shadow-sm">
+                <!-- Info Izquierda -->
+                <div class="col-md-7">
+                    <h2 class="h4 fw-bold text-primary mb-2">Sucursal Santiago Centro</h2>
+                    <p class="text-muted mb-3">A pasos del centro cívico con toda la tradición de nuestros sándwiches.</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="mb-2"><strong>Dirección:</strong> Paseo Huérfanos 890, Santiago</li>
+                        <li class="mb-2"><strong>Horario:</strong> Lunes a Viernes: 10:30 - 20:30 hrs</li>
+                        <li><strong>Teléfono:</strong> +56 9 5555 1234</li>
+                    </ul>
+                </div>
+                <!-- Imagen y Botón Ubicación Derecha -->
+                <div class="col-md-5 d-flex flex-column gap-3">
+                    <img src="imagenes/Sucursales/sucursal3.jpg" class="img-fluid rounded-4 shadow-sm w-100 object-fit-cover" style="height: 180px;" alt="Sucursal Santiago Centro">
+                    <a href="https://maps.google.com" target="_blank" class="btn btn-outline-dark rounded-pill py-2 d-flex align-items-center justify-content-center gap-2 shadow-sm">
+                        <!-- Icono Pin Ubicación -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                        </svg>
+                        <span>Ver en el mapa</span>
+                    </a>
+                </div>
+            </div>
+        </div>
     </main>
+
 
     <!-- Footer -->
         <footer class="footer-oscuro text-white pt-5 pb-4 mt-auto">
