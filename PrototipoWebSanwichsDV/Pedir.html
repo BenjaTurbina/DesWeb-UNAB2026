@@ -85,18 +85,66 @@
                 </div>
             </div>
         </div>
-        <!-- Formulario de iniciar sesion-->
-        <div class="modal fade" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content bg-white border-0 shadow rounded-4">
-                    <div class="modal-header border-bottom-0 pb-0">
-                        <h5 class="modal-title fw-bold text-center" id="perfilModalLabel">Mi Cuenta</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        <!-- Usuario -->
+        <div class="modal fade auth-modal" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header auth-header">
+                        <h2 class="modal-title" id="perfilModalLabel">Mi cuenta · SandwichDV</h2>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
-                    <div class="modal-body text-center py-4">
-                        <p class="text-muted mb-4">Inicia sesión para guardar tus pedidos favoritos y acelerar tu compra.</p>
-                        <button class=" btn-dark w-100 rounded-pill fw-semibold mb-2 py-2">Iniciar Sesión</button>
-                        <button class=" btn-outline-dark w-100 rounded-pill fw-semibold py-2">Crear Cuenta</button>
+                    <div class="modal-body">
+                        <div class="auth-card" id="authCard" data-auth-view="login">
+                            <section class="auth-form-panel auth-login" aria-labelledby="auth-login-title">
+                                <form id="authLoginForm">
+                                    <h3 id="auth-login-title">Iniciar sesión</h3>
+                                    <p class="auth-intro">Vuelve por tus favoritos.</p>
+                                    <div class="auth-field"><label for="auth-login-email">Correo electrónico</label><input id="auth-login-email" name="auth-login-email" type="email" autocomplete="username" required ></div><div class="auth-field"><label for="auth-login-password">Contraseña</label><div class="auth-password"><input id="auth-login-password" name="auth-login-password" type="password" autocomplete="current-password" required ><button type="button" class="auth-reveal" data-auth-password="auth-login-password" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button></div></div>
+                                    <label class="auth-remember"><input type="checkbox" id="authRemember"> Recordar mi correo</label>
+                                    <button type="button" class="auth-link" data-auth-view="reset">¿Olvidaste tu contraseña?</button>
+                                    <button type="submit" class="auth-submit">Iniciar sesión</button>
+                                    <p class="auth-mobile-switch">¿No tienes cuenta? <button type="button" class="auth-link" data-auth-view="register">Crear cuenta</button></p>
+                                </form>
+                            </section>
+                            <section class="auth-form-panel auth-register" aria-labelledby="auth-register-title" inert aria-hidden="true">
+                                <form id="authRegisterForm">
+                                    <h3 id="auth-register-title">Crear cuenta</h3>
+                                    <p class="auth-intro">Tu próximo pedido empieza aquí.</p>
+                                    <div class="auth-field"><label for="auth-register-name">Nombre</label><input id="auth-register-name" name="auth-register-name" type="text" autocomplete="name" required ></div><div class="auth-field"><label for="auth-register-email">Correo electrónico</label><input id="auth-register-email" name="auth-register-email" type="email" autocomplete="email" required ></div><div class="auth-field"><label for="auth-register-password">Contraseña</label><div class="auth-password"><input id="auth-register-password" name="auth-register-password" type="password" autocomplete="new-password" required minlength="8" aria-describedby="auth-password-help auth-strength-text"><button type="button" class="auth-reveal" data-auth-password="auth-register-password" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button></div></div>
+                                    <small id="auth-password-help">Usa al menos 8 caracteres.</small>
+                                    <div class="auth-strength" role="progressbar" aria-label="Fortaleza de la contraseña" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span></span></div>
+                                    <small id="auth-strength-text" aria-live="polite">Fortaleza de la contraseña</small>
+                                    <button type="submit" class="auth-submit">Crear cuenta</button>
+                                    <p class="auth-mobile-switch">¿Ya tienes cuenta? <button type="button" class="auth-link" data-auth-view="login">Iniciar sesión</button></p>
+                                </form>
+                            </section>
+                            <aside class="auth-overlay-container">
+                                <div class="auth-overlay">
+                                    <div class="auth-overlay-panel auth-overlay-left" inert aria-hidden="true">
+                                        <span class="auth-brand">SANDWICHDV</span>
+                                        <h3>¡Ya eres de la casa!</h3>
+                                        <p>Inicia sesión y continúa con tu próximo pedido.</p>
+                                        <button type="button" class="auth-ghost" data-auth-view="login">Iniciar sesión</button>
+                                    </div>
+                                    <div class="auth-overlay-panel auth-overlay-right">
+                                        <span class="auth-brand">SANDWICHDV</span>
+                                        <h3>¡Bienvenido!</h3>
+                                        <p>Crea tu cuenta para guardar tus favoritos y disfrutar de cada pedido.</p>
+                                        <button type="button" class="auth-ghost" data-auth-view="register">Crear cuenta</button>
+                                    </div>
+                                </div>
+                            </aside>
+                            <section class="auth-reset" hidden aria-labelledby="auth-reset-title">
+                                <form id="authResetForm">
+                                    <h3 id="auth-reset-title">Recuperar contraseña</h3>
+                                    <p class="auth-intro">Ingresa el correo asociado a tu cuenta.</p>
+                                    <div class="auth-field"><label for="auth-reset-email">Correo electrónico</label><input id="auth-reset-email" name="auth-reset-email" type="email" autocomplete="email" required ></div>
+                                    <button type="submit" class="auth-submit">Solicitar recuperación</button>
+                                    <button type="button" class="auth-link" data-auth-view="login">Volver al inicio de sesión</button>
+                                </form>
+                            </section>
+                        </div>
+                        <p id="authStatus" class="auth-status" role="status" aria-live="polite" hidden></p>
                     </div>
                 </div>
             </div>
@@ -959,7 +1007,7 @@
                         <h5 class="fw-bold mb-3">Mi cuenta</h5>
                         <ul class="list-unstyled d-flex flex-column gap-2 mb-0">
                             <li><a href="Pedir.html" class="text-white text-decoration-none footer-link">Pedir</a></li>
-                            <li><a href="login.html" class="text-white text-decoration-none footer-link">Iniciar sesión</a></li>
+                            <li><a href="#perfilModal" data-bs-toggle="modal" data-bs-target="#perfilModal" class="text-white text-decoration-none footer-link">Iniciar sesión</a></li>
                         </ul>
                     </div>
                     
@@ -967,5 +1015,6 @@
             </div>
         </footer>
     
+    <script src="auth_pedir.js" defer></script>
 </body>
 </html>

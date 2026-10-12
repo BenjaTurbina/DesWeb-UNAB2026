@@ -138,7 +138,8 @@ def productos(
 
 @app.get(
         "/pedidos",
-        dependencies=Depends[verify_gateway])
+        dependencies=[Depends(verify_gateway)]
+)
 def pedidos(
     x_authenticated_client: str | None = Header(
         default= None
