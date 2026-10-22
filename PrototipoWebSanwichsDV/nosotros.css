@@ -1,0 +1,108 @@
+/* Propuesta visual exclusiva de Nosotros. Los estilos compartidos se conservan. */
+.nosotros-page {
+    --about-cream: #fff4df;
+    --about-gold: #ffc477;
+    --about-handwriting: 'Caveat', 'Segoe Print', 'Bradley Hand', cursive;
+    color: var(--about-cream);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background: radial-gradient(ellipse at 100% 0%, #117a9e 0%, #095a88 40%, var(--color-azul-2) 100%);
+    padding: clamp(42px, 5vw, 76px) 0 0;
+}
+.nosotros-page svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; flex-shrink: 0; }
+.nosotros-page a:focus-visible { outline: 3px solid var(--about-gold); outline-offset: 7px; }
+.nosotros-page section { scroll-margin-top: 124px; }
+.nosotros-page .about-eyebrow { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 700; line-height: 1.5; letter-spacing: 2.5px; text-transform: uppercase; margin-bottom: 22px; color: var(--about-gold); }
+.nosotros-page .about-eyebrow > span { height: 2px; width: 34px; background: currentColor; }
+.nosotros-page .about-hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(30px, 6vw, 84px); align-items: center; }
+.nosotros-page h1, .nosotros-page .about-passion h2, .nosotros-page .about-purpose h2, .nosotros-page .about-invitation h2 { font-family: var(--about-handwriting); font-weight: 700; letter-spacing: 0; }
+.nosotros-page h1 { font-size: clamp(52px, 5.8vw, 84px); line-height: 1.04; margin-bottom: 24px; }
+.nosotros-page h1 > span { color: var(--about-gold); }
+.nosotros-page .about-intro { font-size: clamp(20px, 2vw, 24px); line-height: 1.4; margin-bottom: 17px; font-weight: 600; }
+.nosotros-page .about-story-copy { max-width: 520px; }
+.nosotros-page .about-story-copy p, .nosotros-page .about-passion-copy > p:not(.about-eyebrow) { font-size: 18px; line-height: 1.75; color: #e0edf3; margin-bottom: 17px; }
+.nosotros-page .about-story-copy strong, .nosotros-page .about-passion-copy strong { color: #fff8ed; font-weight: 650; }
+.nosotros-page .about-story-link { display: inline-flex; align-items: center; gap: 14px; margin-top: 13px; padding: 0 0 7px; color: var(--about-gold); text-decoration: none; font-size: 16px; border-bottom: 1px solid #ffc47775; }
+.nosotros-page .about-story-link:hover { color: white; border-color: white; }
+.nosotros-page .about-story-link svg { width: 17px; height: 17px; }
+.nosotros-page .about-portrait { position: relative; margin: 0 10px 12px 0; aspect-ratio: 1 / 1.05; border-radius: 34px 34px 80px 34px; box-shadow: 12px 12px 0 var(--color-naranja-1); background: var(--color-azul-1-dark); }
+.nosotros-page .about-portrait > img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 43% center; border-radius: inherit; }
+.nosotros-page .about-origin { position: absolute; left: -28px; bottom: 32px; width: 134px; height: 134px; background: var(--about-cream); border: 5px solid var(--color-naranja-2-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-direction: column; color: var(--color-naranja-1-dark); box-shadow: 0 8px 30px #052d5055; line-height: 1.1; }
+.nosotros-page .about-origin > span:first-child { text-transform: uppercase; letter-spacing: 2px; font-size: 10px; font-weight: 700; }
+.nosotros-page .about-origin strong { font-size: 40px; letter-spacing: -1.5px; margin: 4px 0; }
+.nosotros-page .about-origin > span:last-child { font-size: 11px; }
+.nosotros-page .about-photo-note { position: absolute; bottom: 27px; left: 130px; right: 18px; color: white; font-size: 13px; text-shadow: 0 1px 7px #000; text-align: right; }
+.nosotros-page .about-signature { display: flex; align-items: center; justify-content: space-around; gap: 18px; padding: 27px 12px; margin: 58px 0 0; border-block: 1px solid #fff4df38; color: #e9f0ef; font-size: clamp(15px, 1.5vw, 19px); }
+.nosotros-page .about-signature > span:nth-child(even) { color: var(--about-gold); font-size: 17px; }
+.nosotros-page .about-passion { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(30px, 6vw, 84px); align-items: center; padding: 76px 0 82px; }
+.nosotros-page .about-food { position: relative; margin: 0; border-radius: 28px; aspect-ratio: 1.17; border-bottom: 7px solid var(--color-naranja-2-light); overflow: hidden; }
+.nosotros-page .about-food img { width: 100%; height: 100%; display: block; object-fit: cover; object-position: 40% center; }
+.nosotros-page .about-food figcaption { position: absolute; left: 0; bottom: 0; padding: 13px 20px; border-radius: 0 16px 0 0; font-size: 14px; letter-spacing: .5px; background: var(--color-azul-2-dark); color: var(--about-cream); }
+.nosotros-page .about-passion h2 { font-size: clamp(36px, 4vw, 54px); line-height: 1.1; margin-bottom: 25px; }
+.nosotros-page .about-passion h2 > span { color: var(--about-gold); }
+.nosotros-page .about-craft-note { display: flex; align-items: center; gap: 14px; border-left: 3px solid var(--color-naranja-2-light); margin-top: 27px; padding: 4px 0 4px 17px; color: #e0edf3; font-size: 15px; line-height: 1.6; }
+.nosotros-page .about-craft-note svg { width: 30px; height: 36px; color: var(--about-gold); }
+.nosotros-page .about-purpose { background: transparent; color: var(--about-cream); padding: clamp(38px, 5vw, 64px) 0; }
+.nosotros-page .about-purpose .about-eyebrow { justify-content: center; color: var(--about-gold); margin-bottom: 32px; }
+.nosotros-page .about-purpose-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.nosotros-page .about-mission { padding-right: clamp(24px, 4vw, 64px); }
+.nosotros-page .about-vision { padding-left: clamp(24px, 4vw, 64px); border-left: 1px solid #fff4df38; }
+.nosotros-page .about-purpose h2 { color: var(--about-gold); font-size: clamp(38px, 3.5vw, 48px); line-height: 1.1; margin: 0 0 18px; }
+.nosotros-page .about-purpose-grid p { color: #e0edf3; font-size: 18px; line-height: 1.75; margin: 0; }
+.nosotros-page .about-invitation { display: flex; justify-content: space-between; align-items: center; gap: 35px; padding: 64px 0 68px; }
+.nosotros-page .about-invitation .about-eyebrow { font-size: 11px; letter-spacing: 2px; margin-bottom: 14px; }
+.nosotros-page .about-invitation h2 { font-size: clamp(36px, 3.6vw, 50px); line-height: 1.1; margin-bottom: 14px; }
+.nosotros-page .about-invitation > div > p:last-child { color: #dbeaf2; font-size: 17px; margin-bottom: 0; }
+.nosotros-page .about-actions { display: flex; flex-direction: column; align-items: center; gap: 17px; min-width: 235px; }
+.nosotros-page .about-order-link { display: inline-flex; align-items: center; justify-content: center; gap: 34px; min-height: 52px; width: 100%; padding: 11px 27px; font-size: 18px; font-weight: 650; color: #442c14; }
+.nosotros-page .about-order-link:hover { background-color: var(--color-naranja-1-light) !important; }
+.nosotros-page .about-branches-link { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--about-cream); font-size: 16px; padding-bottom: 4px; border-bottom: 1px solid #fff4df50; }
+.nosotros-page .about-branches-link:hover { border-color: var(--about-gold); color: var(--about-gold); }
+.nosotros-page .about-branches-link svg { width: 13px; height: 13px; }
+@media (max-width: 991.98px) {
+    .nosotros-page .about-hero { gap: 32px; }
+    .nosotros-page h1 { font-size: 54px; }
+    .nosotros-page .about-intro { font-size: 21px; }
+    .nosotros-page .about-story-copy p, .nosotros-page .about-passion-copy > p:not(.about-eyebrow) { font-size: 17px; line-height: 1.65; }
+    .nosotros-page .about-portrait { aspect-ratio: .8; }
+    .nosotros-page .about-origin { width: 110px; height: 110px; left: -17px; bottom: 25px; }
+    .nosotros-page .about-origin strong { font-size: 33px; }
+    .nosotros-page .about-origin > span:last-child { font-size: 10px; }
+    .nosotros-page .about-photo-note { display: none; }
+    .nosotros-page .about-passion { gap: 32px; padding-block: 58px; }
+    .nosotros-page .about-passion h2 { font-size: 40px; }
+    .nosotros-page .about-food { aspect-ratio: .85; }
+    .nosotros-page .about-purpose-grid p { font-size: 17px; }
+}
+@media (max-width: 767.98px) {
+    .nosotros-page { padding-top: 34px; }
+    .nosotros-page .about-hero { grid-template-columns: minmax(0, 1fr); gap: 34px; }
+    .nosotros-page .about-eyebrow { margin-bottom: 17px; font-size: 11px; letter-spacing: 2px; }
+    .nosotros-page h1 { font-size: clamp(46px, 11.5vw, 62px); margin-bottom: 19px; }
+    .nosotros-page .about-intro { font-size: 21px; }
+    .nosotros-page .about-story-copy { max-width: none; }
+    .nosotros-page .about-story-link { margin-top: 5px; }
+    .nosotros-page .about-portrait { aspect-ratio: 1.25; margin: 0 8px 8px 0; border-radius: 24px 24px 55px 24px; box-shadow: 8px 8px 0 var(--color-naranja-1); }
+    .nosotros-page .about-origin { width: 105px; height: 105px; left: 13px; bottom: 14px; border-width: 4px; }
+    .nosotros-page .about-origin strong { font-size: 32px; }
+    .nosotros-page .about-signature { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 21px 4px; margin-top: 35px; font-size: 14px; text-align: center; }
+    .nosotros-page .about-signature > span:nth-child(even) { display: none; }
+    .nosotros-page .about-passion { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-block: 40px; }
+    .nosotros-page .about-passion-copy { grid-row: 1; }
+    .nosotros-page .about-passion h2 { font-size: clamp(36px, 9vw, 46px); margin-bottom: 20px; }
+    .nosotros-page .about-food { aspect-ratio: 1.15; border-radius: 23px; }
+    .nosotros-page .about-craft-note { margin-top: 22px; }
+    .nosotros-page .about-purpose { padding: 34px 0; }
+    .nosotros-page .about-purpose .about-eyebrow { margin-bottom: 26px; }
+    .nosotros-page .about-purpose-grid { grid-template-columns: minmax(0, 1fr); gap: 25px; }
+    .nosotros-page .about-mission { padding-right: 0; }
+    .nosotros-page .about-vision { padding-left: 0; padding-top: 25px; border-left: 0; border-top: 1px solid #fff4df38; }
+    .nosotros-page .about-invitation { flex-direction: column; align-items: stretch; gap: 26px; padding-block: 39px 44px; }
+    .nosotros-page .about-invitation h2 { font-size: 42px; }
+    .nosotros-page .about-actions { align-items: flex-start; min-width: 0; gap: 19px; }
+    .nosotros-page .about-order-link { width: auto; min-width: 210px; gap: 30px; }
+}
+@media (max-width: 359.98px) {
+    .nosotros-page h1 { font-size: 44px; }
+    .nosotros-page .about-intro { font-size: 20px; }
+    .nosotros-page .about-invitation h2 { font-size: 38px; }
+}

@@ -3,6 +3,27 @@ let carrito = {};
 
 function inicializarEventos() {
 
+    // Mantener visible el apartado al cerrarse una lista anterior más larga.
+    const acordeonFiltros = document.getElementById('acordeonFiltros');
+    if (acordeonFiltros) {
+        acordeonFiltros.addEventListener('shown.bs.collapse', (evento) => {
+            const panel = evento.target;
+            if (!panel.matches('.accordion-collapse.show')) return;
+
+            const boton = panel.closest('.accordion-item').querySelector('.accordion-button');
+            const posicion = boton.getBoundingClientRect();
+            const navbar = document.querySelector('.navbar.sticky-top');
+            const limiteSuperior = (navbar ? navbar.getBoundingClientRect().bottom : 0) + 12;
+
+            if (posicion.top < limiteSuperior || posicion.bottom > window.innerHeight) {
+                window.scrollBy({
+                    top: posicion.top - limiteSuperior,
+                    behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+                });
+            }
+        });
+    }
+
     // Conectar boton de Filtros
     const btnAplicar = document.getElementById('btnAplicarFiltros');
     if (btnAplicar) {

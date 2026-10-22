@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
+    <script src="catalogo_loading.js"></script>
     <script src = "acciones_pedir.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
@@ -214,7 +215,7 @@
                 <aside class="col-lg-3">
                     <!-- Botón para mostrar filtros solo en móviles -->
                     <div class="d-lg-none mb-3">
-                        <button class="btn btn-outline-dark w-100 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#panelFiltrosMobile">
+                        <button class="btn btn-outline-dark w-100 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#panelFiltrosMobile" aria-expanded="false" aria-controls="panelFiltrosMobile">
                             Filtros de Búsqueda
                         </button>
                     </div>
@@ -224,17 +225,17 @@
                         <div class="Panel_filtro rounded-4 shadow-sm p-4 h-100">
                             <h5 class="fw-bold mb-4 d-none d-lg-block">Filtros</h5>
                             
-                            <!-- Acordeón de filtros modificado (se eliminó accordion-flush y se agregó d-flex flex-column gap-3) -->
+                            <!-- Un solo apartado abierto a la vez, conservando las opciones seleccionadas. -->
                                 <div class="accordion d-flex flex-column gap-3" id="acordeonFiltros">
                                     
                                     <!-- 1. El Pan -->
                                     <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
                                         <h2 class="accordion-header">
-                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panPan">
+                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panPan" aria-expanded="false" aria-controls="panPan">
                                                 Tipo de Pan
                                             </button>
                                         </h2>
-                                        <div id="panPan" class="accordion-collapse collapse">
+                                        <div id="panPan" class="accordion-collapse collapse" data-bs-parent="#acordeonFiltros">
                                             <div class="accordion-body px-3">
                                                 <p class="text-uppercase small fw-semibold mb-1">Clásicos</p>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="panFrica"><label class="form-check-label" for="panFrica">Pan Frica</label></div>
@@ -262,11 +263,11 @@
                                     <!-- 2. La Proteína -->
                                     <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
                                         <h2 class="accordion-header">
-                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panProteina">
+                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panProteina" aria-expanded="false" aria-controls="panProteina">
                                                 Tipo de Proteína
                                             </button>
                                         </h2>
-                                        <div id="panProteina" class="accordion-collapse collapse">
+                                        <div id="panProteina" class="accordion-collapse collapse" data-bs-parent="#acordeonFiltros">
                                             <div class="accordion-body px-3">
                                                 <p class="text-uppercase text-muted small fw-semibold mb-1">Vacuno</p>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="churrasco"><label class="form-check-label" for="churrasco">Churrasco</label></div>
@@ -303,11 +304,11 @@
                                     <!-- 3. Estilos Clásicos -->
                                     <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
                                         <h2 class="accordion-header">
-                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panEstilos">
+                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panEstilos" aria-expanded="false" aria-controls="panEstilos">
                                                 Estilos de Sandwich
                                             </button>
                                         </h2>
-                                        <div id="panEstilos" class="accordion-collapse collapse">
+                                        <div id="panEstilos" class="accordion-collapse collapse" data-bs-parent="#acordeonFiltros">
                                             <div class="accordion-body px-3">
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="italiano"><label class="form-check-label" for="italiano">Italiano</label></div>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="chacarero"><label class="form-check-label" for="chacarero">Chacarero</label></div>
@@ -322,11 +323,11 @@
                                     <!-- 4. Ingredientes Clave -->
                                     <div class="accordion-item border-0 rounded-3 overflow-hidden shadow-sm">
                                         <h2 class="accordion-header">
-                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panIngredientes">
+                                            <button class="filtro_seccion accordion-button collapsed fw-semibold px-3" type="button" data-bs-toggle="collapse" data-bs-target="#panIngredientes" aria-expanded="false" aria-controls="panIngredientes">
                                                 Por Ingredientes
                                             </button>
                                         </h2>
-                                        <div id="panIngredientes" class="accordion-collapse collapse">
+                                        <div id="panIngredientes" class="accordion-collapse collapse" data-bs-parent="#acordeonFiltros">
                                             <div class="accordion-body px-3 Filtro_opciones">
                                                 <p class="text-uppercase text-muted small fw-semibold mb-1">Vegetales</p>
                                                 <div class="form-check"><input class="form-check-input" type="checkbox" id="palta"><label class="form-check-label" for="palta">Palta</label></div>
@@ -358,7 +359,27 @@
                 </aside>
 
                 <!-- Bloque Pedidos -->
-                <section class="col-lg-9"> 
+                <p id="catalogoLoadingStatus" class="visually-hidden" role="status"></p>
+                <section class="col-lg-9" id="catalogoProductos">
+                    <template id="productoSkeleton">
+                        <div class="product-skeleton" aria-hidden="true">
+                            <span class="skeleton-block skeleton-image"></span>
+                            <div class="skeleton-body">
+                                <span class="skeleton-block skeleton-title"></span>
+                                <span class="skeleton-block skeleton-line"></span>
+                                <span class="skeleton-block skeleton-line skeleton-line-short"></span>
+                                <div class="skeleton-bottom">
+                                    <span class="skeleton-block skeleton-price"></span>
+                                    <span class="skeleton-block skeleton-button"></span>
+                                </div>
+                            </div>
+                            <div class="skeleton-tags">
+                                <span class="skeleton-block"></span>
+                                <span class="skeleton-block"></span>
+                                <span class="skeleton-block"></span>
+                            </div>
+                        </div>
+                    </template>
                     <div class="Panel_pedido rounded-4 shadow-sm p-4 h-100">
                         <h2 class="fw-bold mb-4">Sándwiches</h2>
 
@@ -368,8 +389,8 @@
                             <div class="col">
                                 <div class="card shadow-sm rounded-4 bloque_producto">
                                     <div class="row g-0">
-                                        <div class="col-4 col-lg-3">
-                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                        <div class="col-4 col-lg-3 producto-imagen">
+                                            <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px;">
                                                <img src="imagenes/Sandwiches/korean-chicken-sandwich.jpg" alt="Pollito Koreano" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                             </div>
                                         </div>
@@ -379,7 +400,7 @@
                                                     <h6 class="card-title fw-bold mb-1">Pollito Koreano</h6>
                                                     <p class="card-text text-muted small mb-2 lh-sm">Pollo crocante, glaseado de miel y especias, kimchi, pepinillos, cilantro fresco y mayonesa.</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                     <div>
                                                         <h6 class="text-muted small mb-0">Precio</h6>
                                                         <p class="mb-0 fw-bold fs-6">$ 10.950</p>
@@ -406,8 +427,8 @@
                             <div class="col">
                                 <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                     <div class="row g-0">
-                                        <div class="col-4 col-lg-3">
-                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                        <div class="col-4 col-lg-3 producto-imagen">
+                                            <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px;">
                                                 <img src="imagenes/Sandwiches/MECHADA.png" alt="Mechada" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                             </div>
                                         </div>
@@ -417,7 +438,7 @@
                                                     <h6 class="card-title fw-bold mb-1">El revolucionario</h6>
                                                     <p class="card-text text-muted small mb-2 lh-sm">Carne mechada braseada, queso mantecoso, cebolla caramelizada, tomates confitados y lechuga.</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                     <div>
                                                         <h6 class="text-muted small mb-0">Precio</h6>
                                                         <p class="mb-0 fw-bold fs-6 ">$ 11.950</p>
@@ -445,8 +466,8 @@
                             <div class="col">
                                 <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                     <div class="row g-0">
-                                        <div class="col-4 col-lg-3">
-                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                        <div class="col-4 col-lg-3 producto-imagen">
+                                            <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px;">
                                                 <img src="imagenes/Sandwiches/Churrasco_Italiano1.jpg" alt="Churrasco Italiano" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                             </div>
                                         </div>
@@ -456,7 +477,7 @@
                                                     <h6 class="card-title fw-bold mb-1">Churrasco Italiano</h6>
                                                     <p class="card-text text-muted small mb-2 lh-sm">Finas láminas de vacuno a la plancha, palta hass molida, tomate fresco y mayonesa casera.</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                     <div>
                                                         <h6 class="text-muted small mb-0">Precio</h6>
                                                         <p class="mb-0 fw-bold fs-6">$ 6.500</p>
@@ -484,8 +505,8 @@
                             <div class="col">
                                 <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                     <div class="row g-0">
-                                        <div class="col-4 col-lg-3">
-                                            <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                        <div class="col-4 col-lg-3 producto-imagen">
+                                            <div class="bg-secondary bg-opacity-25 rounded-start-4 h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px;">
                                                 <img src="imagenes/Sandwiches/Barros-luco01.jpg" alt="Barros Luco" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                             </div>
                                         </div>
@@ -495,7 +516,7 @@
                                                     <h6 class="card-title fw-bold mb-1">Mechada Barros Luco</h6>
                                                     <p class="card-text text-muted small mb-2 lh-sm">Carne mechada deshilachada en su jugo con abundante queso mantecoso fundido.</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                     <div>
                                                         <h6 class="text-muted small mb-0">Precio</h6>
                                                         <p class="mb-0 fw-bold fs-6 ">$ 7.200</p>
@@ -523,8 +544,8 @@
                             <div class="col">
                                 <div class="card shadow-sm rounded-4  bg-opacity-50 bloque_producto">
                                     <div class="row g-0">
-                                        <div class="col-4 col-lg-3">
-                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                        <div class="col-4 col-lg-3 producto-imagen">
+                                            <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px;">
                                                 <img src="imagenes/Sandwiches/KFC-CRISPY-BBQ.webp" alt="Pollo Crispy" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                             </div>
                                         </div>
@@ -534,7 +555,7 @@
                                                     <h6 class="card-title fw-bold mb-1">Pollo Crispy BBQ</h6>
                                                     <p class="card-text text-muted small mb-2 lh-sm">Pechuga de pollo frita y crujiente, tocino ahumado, queso cheddar, pepinillos y salsa BBQ.</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                     <div>
                                                         <h6 class="text-muted small mb-0">Precio</h6>
                                                         <p class="mb-0 fw-bold fs-6 ">$ 6.800</p>
@@ -563,8 +584,8 @@
                             <div class="col">
                                 <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                     <div class="row g-0">
-                                        <div class="col-4 col-lg-3">
-                                            <div class= "h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                        <div class="col-4 col-lg-3 producto-imagen">
+                                            <div class= "h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px;">
                                                 <img src="imagenes/Sandwiches/Chacarero-edit.jpg" alt="Chacarero" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                             </div>
                                         </div>
@@ -574,7 +595,7 @@
                                                     <h6 class="card-title fw-bold mb-1">Lomito Chacarero</h6>
                                                     <p class="card-text text-muted small mb-2 lh-sm">Finas lonjas de lomo de cerdo horneado, porotos verdes, tomate, ají verde y mayonesa.</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                     <div>
                                                         <h6 class="text-muted small mb-0">Precio</h6>
                                                         <p class="mb-0 fw-bold fs-6">$ 6.900</p>
@@ -603,8 +624,8 @@
                             <div class="col" id="not-burger">
                                 <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                     <div class="row g-0">
-                                        <div class="col-4 col-lg-3">
-                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                        <div class="col-4 col-lg-3 producto-imagen">
+                                            <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px;">
                                                <img src="imagenes/Sandwiches/temp_image_20210806_214030_30d8e9a7-911f-47ad-bcbe-0b257e6a63d4-Cropped.jpg" alt="Not Burger" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                             </div>
                                         </div>
@@ -614,7 +635,7 @@
                                                     <h6 class="card-title fw-bold mb-1">Not Burger Vegana</h6>
                                                     <p class="card-text text-muted small mb-2 lh-sm">Hamburguesa plant-based con palta, tomate y mayonesa 100% vegana en pan de masa madre.</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                     <div>
                                                         <h6 class="text-muted small mb-0">Precio</h6>
                                                         <p class="mb-0 fw-bold fs-6">$ 7.500</p>
@@ -643,8 +664,8 @@
                             <div class="col">
                                 <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                     <div class="row g-0">
-                                        <div class="col-4 col-lg-3">
-                                            <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px; max-height: 180px;">
+                                        <div class="col-4 col-lg-3 producto-imagen">
+                                            <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 200px; max-height: 250px;">
                                                <img src="imagenes/Sandwiches/rWAYQ5rJwMqgErSzJ-300-x.webp" alt="Not Burger" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                             </div>
                                         </div>
@@ -654,7 +675,7 @@
                                                     <h6 class="card-title fw-bold mb-1">Guaton Loyola</h6>
                                                     <p class="card-text text-muted small mb-2 lh-sm">Doble hamburguesa, queso cheddar y queso mantecoso, tocino ahumado de la casa, cebollas caramelizadas al vino tinto, pepinillos, lechuga, tomate y salsa dijonesa.</p>
                                                 </div>
-                                                <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                                <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                     <div>
                                                         <h6 class="text-muted small mb-0">Precio</h6>
                                                         <p class="mb-0 fw-bold fs-6">$ 8.500</p>
@@ -688,8 +709,8 @@
                         <div class="col">
                             <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                 <div class="row g-0">
-                                    <div class="col-4 col-lg-3">
-                                        <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px; max-height: 150px;">
+                                    <div class="col-4 col-lg-3 producto-imagen">
+                                        <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 170px; max-height: 180px;">
                                             <img src="imagenes/Wraps/images.jfif" alt="Wrap de Pollo" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                         </div>
                                     </div>
@@ -699,7 +720,7 @@
                                                 <h6 class="card-title fw-bold mb-1">Wrap de Pollo</h6>
                                                 <p class="card-text text-muted small mb-2 lh-sm">Tiras de pollo crujiente, lechuga fresca, tomate y suave mayonesa casera envueltos en una tortilla tostada.</p>
                                             </div>
-                                            <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                            <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                 <div>
                                                     <h6 class="text-muted small mb-0">Precio</h6>
                                                     <p class="mb-0 fw-bold fs-6">$ 5.900</p>
@@ -727,8 +748,8 @@
                         <div class="col">
                             <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                 <div class="row g-0">
-                                    <div class="col-4 col-lg-3">
-                                        <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px;">
+                                    <div class="col-4 col-lg-3 producto-imagen">
+                                        <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px;">
                                             <img src="imagenes/Wraps/Vegan-Baked-Falafel-resize.webp" alt="Wrap de Falafel" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                         </div>
                                     </div>
@@ -738,7 +759,7 @@
                                                 <h6 class="card-title fw-bold mb-1">Wrap Falafel Vegano</h6>
                                                 <p class="card-text text-muted small mb-2 lh-sm">Bolitas de falafel horneadas, palta, tomate, lechuga y aderezo de hummus en tortilla de espinaca.</p>
                                             </div>
-                                            <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                            <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                 <div>
                                                     <h6 class="text-muted small mb-0">Precio</h6>
                                                     <p class="mb-0 fw-bold fs-6">$ 6.200</p>
@@ -766,8 +787,8 @@
                         <div class="col">
                             <div class="card shadow-sm rounded-4 bg-opacity-50 bloque_producto">
                                 <div class="row g-0">
-                                    <div class="col-4 col-lg-3">
-                                        <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 140px; max-height: 160px;">
+                                    <div class="col-4 col-lg-3 producto-imagen">
+                                        <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 140px; max-height: 160px;">
                                             <img src="imagenes/Wraps/8249b22dfca4e8fc258674c71f2e212f.webp" alt="Wrap Mechada" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                         </div>
                                     </div>
@@ -777,7 +798,7 @@
                                                 <h6 class="card-title fw-bold mb-1">Wrap Mechada Luco</h6>
                                                 <p class="card-text text-muted small mb-2 lh-sm">Toda la potencia de nuestra mechada deshilachada envuelta con abundante queso mantecoso fundido.</p>
                                             </div>
-                                            <div class="d-flex justify-content-between align-items-end pe-2 mt-2">
+                                            <div class="d-flex justify-content-between align-items-end producto-compra pe-2 mt-2">
                                                 <div>
                                                     <h6 class="text-muted small mb-0">Precio</h6>
                                                     <p class="mb-0 fw-bold fs-6">$ 6.800</p>
@@ -813,8 +834,8 @@
                                 <div class="col">
                                     <div class="card shadow-sm rounded-4 h-100 bloque_producto">
                                         <div class="row g-0 h-100">
-                                            <div class="col-4">
-                                                <div class="h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                            <div class="col-4 producto-imagen">
+                                                <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 100px;">
                                                     <img src="imagenes/Bebestibles/istockphoto-458120031-612x612.jpg" alt="Coca-Cola" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                                 </div>
                                             </div>
@@ -825,7 +846,7 @@
                                                         <h6 class="card-title fw-bold mb-1">Coca-Cola Original</h6>
                                                         <p class="card-text text-muted small mb-0 lh-sm">Lata 350ml</p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                    <div class="d-flex justify-content-between align-items-end producto-compra mt-2">
                                                         <p class="mb-0 fw-bold fs-6">$ 1.500</p>
                                                         <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
                                                             <span class="fs-5 lh-1 mb-0">+</span>
@@ -841,8 +862,8 @@
                                 <div class="col">
                                     <div class="card shadow-sm rounded-4 h-100 bloque_producto">
                                         <div class="row g-0 h-100">
-                                            <div class="col-4">
-                                                <div class=" h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                            <div class="col-4 producto-imagen">
+                                                <div class=" h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 100px;">
                                                     <img src="imagenes/Bebestibles/coca-cola-sazucar-lata-6x350-cc.jpg" alt="Coca-Cola Zero" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                                 </div>
                                             </div>
@@ -852,7 +873,7 @@
                                                         <h6 class="card-title fw-bold mb-1">Coca-Cola Zero</h6>
                                                         <p class="card-text text-muted small mb-0 lh-sm">Lata 350ml</p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                    <div class="d-flex justify-content-between align-items-end producto-compra mt-2">
                                                         <p class="mb-0 fw-bold fs-6">$ 1.500</p>
                                                         <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
                                                             <span class="fs-5 lh-1 mb-0">+</span>
@@ -868,8 +889,8 @@
                                 <div class="col">
                                     <div class="card shadow-sm rounded-4 h-100 bloque_producto">
                                         <div class="row g-0 h-100">
-                                            <div class="col-4">
-                                                <div class=" h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                            <div class="col-4 producto-imagen">
+                                                <div class=" h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 100px;">
                                                     <img src="imagenes/Bebestibles/jugo-de-naranja-destacado.jpg" alt="Juego Naranja" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                                 </div>
                                             </div>
@@ -879,7 +900,7 @@
                                                         <h6 class="card-title fw-bold mb-1">Jugo de Naranja</h6>
                                                         <p class="card-text text-muted small mb-0 lh-sm">Natural, recién exprimido 400ml</p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                    <div class="d-flex justify-content-between align-items-end producto-compra mt-2">
                                                         <p class="mb-0 fw-bold fs-6">$ 2.900</p>
                                                         <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
                                                             <span class="fs-5 lh-1 mb-0">+</span>
@@ -895,8 +916,8 @@
                                 <div class="col">
                                     <div class="card shadow-sm rounded-4 h-100 bloque_producto">
                                         <div class="row g-0 h-100">
-                                            <div class="col-4">
-                                                <div class= h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                            <div class="col-4 producto-imagen">
+                                                <div class="h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 100px;">
                                                     <img src="imagenes/Bebestibles/frontal-5158.webp" alt="Austral Calafate" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                                 </div>
                                             </div>
@@ -906,7 +927,7 @@
                                                         <h6 class="card-title fw-bold mb-1">Cerveza Austral Calafate</h6>
                                                         <p class="card-text text-muted small mb-0 lh-sm">Botella 330ml</p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                    <div class="d-flex justify-content-between align-items-end producto-compra mt-2">
                                                         <p class="mb-0 fw-bold fs-6">$ 3.200</p>
                                                         <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
                                                             <span class="fs-5 lh-1 mb-0">+</span>
@@ -922,8 +943,8 @@
                                 <div class="col">
                                     <div class="card shadow-sm rounded-4 h-100 bloque_producto">
                                         <div class="row g-0 h-100">
-                                            <div class="col-4">
-                                                <div class= "h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                            <div class="col-4 producto-imagen">
+                                                <div class= "h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 100px;">
                                                     <img src="imagenes/Bebestibles/4835_0_sprite-lata-350cc.png" alt="Sprite" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                                 </div>
                                             </div>
@@ -933,7 +954,7 @@
                                                         <h6 class="card-title fw-bold mb-1"> Sprite Original</h6>
                                                         <p class="card-text text-muted small mb-0 lh-sm">Lata 350ml</p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                    <div class="d-flex justify-content-between align-items-end producto-compra mt-2">
                                                         <p class="mb-0 fw-bold fs-6">$ 1.500</p>
                                                         <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
                                                             <span class="fs-5 lh-1 mb-0">+</span>
@@ -948,8 +969,8 @@
                                 <div class="col">
                                     <div class="card shadow-sm rounded-4 h-100 bloque_producto">
                                         <div class="row g-0 h-100">
-                                            <div class="col-4">
-                                                <div class= "h-100 d-flex align-items-center justify-content-center" style="min-height: 100px;">
+                                            <div class="col-4 producto-imagen">
+                                                <div class= "h-100 d-flex align-items-center justify-content-center producto-imagen-marco" style="min-height: 100px;">
                                                     <img src="imagenes/Bebestibles/1110073.png" alt="Fanta" class="img-fluid rounded-start-3 h-100 w-100 object-fit-cover" style="min-height: 140px;">
                                                 </div>
                                             </div>
@@ -959,7 +980,7 @@
                                                         <h6 class="card-title fw-bold mb-1">Fanta Original</h6>
                                                         <p class="card-text text-muted small mb-0 lh-sm">Lata 350ml</p>
                                                     </div>
-                                                    <div class="d-flex justify-content-between align-items-end mt-2">
+                                                    <div class="d-flex justify-content-between align-items-end producto-compra mt-2">
                                                         <p class="mb-0 fw-bold fs-6">$ 1.500</p>
                                                         <button class="btn btn-dark rounded-circle d-flex align-items-center justify-content-center shadow-sm" style="width: 32px; height: 32px; padding: 0;">
                                                             <span class="fs-5 lh-1 mb-0">+</span>
