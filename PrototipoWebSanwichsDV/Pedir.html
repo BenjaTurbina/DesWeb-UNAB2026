@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="pagina-pedir">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="catalogo_loading.js"></script>
+    <script src="carrito_checkout.js"></script>
     <script src = "acciones_pedir.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
@@ -82,7 +83,8 @@
                         <span>Total:</span>
                         <span>$ 0</span>
                     </div>
-                    <button class="btn btn-dark w-100 rounded-pill fw-semibold py-2">Ir a pagar</button>
+                    <button type="button" class="btn btn-dark w-100 rounded-pill fw-semibold py-2" id="btnIrPagar" disabled>Ir a pagar</button>
+                    <p id="checkoutCartError" class="small text-danger mt-2 mb-0" role="alert" hidden>No pudimos conservar el carrito. Permite el almacenamiento de esta página e inténtalo nuevamente.</p>
                 </div>
             </div>
         </div>
@@ -108,10 +110,23 @@
                                 </form>
                             </section>
                             <section class="auth-form-panel auth-register" aria-labelledby="auth-register-title" inert aria-hidden="true">
-                                <form id="authRegisterForm">
+                                <form id="authRegisterForm" method="post">
                                     <h3 id="auth-register-title">Crear cuenta</h3>
-                                    <p class="auth-intro">Tu próximo pedido empieza aquí.</p>
-                                    <div class="auth-field"><label for="auth-register-name">Nombre</label><input id="auth-register-name" name="auth-register-name" type="text" autocomplete="name" required ></div><div class="auth-field"><label for="auth-register-email">Correo electrónico</label><input id="auth-register-email" name="auth-register-email" type="email" autocomplete="email" required ></div><div class="auth-field"><label for="auth-register-password">Contraseña</label><div class="auth-password"><input id="auth-register-password" name="auth-register-password" type="password" autocomplete="new-password" required minlength="8" aria-describedby="auth-password-help auth-strength-text"><button type="button" class="auth-reveal" data-auth-password="auth-register-password" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button></div></div>
+                                    <p class="auth-intro">Completa tus datos para identificar tus pedidos.</p>
+                                    <div class="auth-register-grid">
+
+                                        <div class="auth-field"><label for="auth-register-run">RUN</label><input id="auth-register-run" name="auth-register-run" type="text" placeholder="12345678K" maxlength="12" autocomplete="off" required aria-describedby="auth-run-help"><small id="auth-run-help">Ingresa tu RUN con dígito verificador</small></div>
+                                        <div class="auth-field"><label for="auth-register-birthdate">Fecha de nacimiento</label><input id="auth-register-birthdate" name="auth-register-birthdate" type="date" autocomplete="bday" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-name">Nombre completo</label><input id="auth-register-name" name="auth-register-name" type="text" autocomplete="name" minlength="3" maxlength="100" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-address">Dirección</label><input id="auth-register-address" name="auth-register-address" type="text" autocomplete="street-address" maxlength="160" required></div>
+                                        <div class="auth-field"><label for="auth-register-commune">Comuna</label><input id="auth-register-commune" name="auth-register-commune" type="text" autocomplete="address-level3" maxlength="80" required></div>
+                                        <div class="auth-field"><label for="auth-register-province">Provincia</label><input id="auth-register-province" name="auth-register-province" type="text" autocomplete="address-level2" maxlength="80" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-region">Región</label><input id="auth-register-region" name="auth-register-region" type="text" autocomplete="address-level1" maxlength="80" required></div>
+                                        <div class="auth-field"><label for="auth-register-sex">Sexo</label><select id="auth-register-sex" name="auth-register-sex" required><option value="">Selecciona</option><option value="femenino">Femenino</option><option value="masculino">Masculino</option><option value="no_informado">Prefiero no informar</option></select></div>
+                                        <div class="auth-field"><label for="auth-register-phone">Número telefónico</label><input id="auth-register-phone" name="auth-register-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+56 9 1234 5678" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-email">Correo electrónico</label><input id="auth-register-email" name="auth-register-email" type="email" autocomplete="email" maxlength="254" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-password">Contraseña</label><div class="auth-password"><input id="auth-register-password" name="auth-register-password" type="password" autocomplete="new-password" required minlength="8" aria-describedby="auth-password-help auth-strength-text"><button type="button" class="auth-reveal" data-auth-password="auth-register-password" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button></div></div>
+                                    </div>
                                     <small id="auth-password-help">Usa al menos 8 caracteres.</small>
                                     <div class="auth-strength" role="progressbar" aria-label="Fortaleza de la contraseña" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span></span></div>
                                     <small id="auth-strength-text" aria-live="polite">Fortaleza de la contraseña</small>
@@ -193,7 +208,6 @@
                         <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center text-white text-center px-4" style="background-color: rgba(0, 0, 0, 0.6);">
                             <h2 class="fw-bold display-6 mb-2">Combo Estudiantes UNAB</h2>
                             <p class="fs-5 mb-4">Muestra tu credencial universitaria y obtén una bebida gratis con tu sándwich.</p>
-                            <a class="btn btn-light rounded-pill px-4 fw-bold text-dark shadow-sm text-nowrap">Descubrir</a>
                         </div>
                     </div>
                 </div>
@@ -212,16 +226,9 @@
             <div class="row g-4 py-4">
 
                 <!-- Panel de Filtros -->
-                <aside class="col-lg-3">
-                    <!-- Botón para mostrar filtros solo en móviles -->
-                    <div class="d-lg-none mb-3">
-                        <button class="btn btn-outline-dark w-100 fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#panelFiltrosMobile" aria-expanded="false" aria-controls="panelFiltrosMobile">
-                            Filtros de Búsqueda
-                        </button>
-                    </div>
-
+                <aside class="col-xl-3 d-none d-xl-block">
                     <!-- Contenedor de filtros -->
-                    <div class="collapse d-lg-block" id="panelFiltrosMobile">
+                    <div id="panelFiltrosMobile">
                         <div class="Panel_filtro rounded-4 shadow-sm p-4 h-100">
                             <h5 class="fw-bold mb-4 d-none d-lg-block">Filtros</h5>
                             
@@ -360,7 +367,12 @@
 
                 <!-- Bloque Pedidos -->
                 <p id="catalogoLoadingStatus" class="visually-hidden" role="status"></p>
-                <section class="col-lg-9" id="catalogoProductos">
+                <section class="col-xl-9" id="catalogoProductos">
+                    <nav class="categorias-pedido" aria-label="Categorías del menú">
+                        <a class="categoria-pedido" href="#categoria-sandwiches" aria-current="location">Sándwiches</a>
+                        <a class="categoria-pedido" href="#categoria-wraps">Wraps</a>
+                        <a class="categoria-pedido" href="#categoria-bebidas">Bebidas</a>
+                    </nav>
                     <template id="productoSkeleton">
                         <div class="product-skeleton" aria-hidden="true">
                             <span class="skeleton-block skeleton-image"></span>
@@ -380,8 +392,8 @@
                             </div>
                         </div>
                     </template>
-                    <div class="Panel_pedido rounded-4 shadow-sm p-4 h-100">
-                        <h2 class="fw-bold mb-4">Sándwiches</h2>
+                    <div class="Panel_pedido rounded-4 shadow-sm p-4">
+                        <h2 class="fw-bold mb-4 categoria-titulo" id="categoria-sandwiches" tabindex="-1">Sándwiches</h2>
 
                         <div class="row row-cols-1 g-4 pedido-grid">
 
@@ -701,7 +713,7 @@
                             </div>
                         </div>
                     
-                    <h2 class="fw-bold mb-4 mt-5">Wraps</h2>
+                    <h2 class="fw-bold mb-4 mt-5 categoria-titulo" id="categoria-wraps" tabindex="-1">Wraps</h2>
 
                     <div class="row row-cols-1 g-4 pedido-grid mb-5">
 
@@ -825,7 +837,7 @@
                     </div>
 
                     <!-- Bebidas -->
-                        <h2 class="fw-bold mb-4 mt-5">Bebidas</h2>
+                        <h2 class="fw-bold mb-4 mt-5 categoria-titulo" id="categoria-bebidas" tabindex="-1">Bebidas</h2>
 
                         <!-- Contenedor de Bebidas -->
                         <div class="row row-cols-1 row-cols-md-2 g-3">

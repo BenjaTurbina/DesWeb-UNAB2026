@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Revisa tu pedido SandwichDV y elige cómo recibirlo y pagarlo.">
+    <title>Finalizar pedido · SandwichDV</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="checkout.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="carrito_checkout.js" defer></script>
+    <script src="auth_pedir.js" defer></script>
+    <script src="checkout.js" defer></script>
+</head>
+<body class="checkout-page">
+<nav class="navbar navbar-expand-lg shadow-sm sticky-top">
+        <div class="container-fluid">
+            
+            <!-- Logo -->
+            <img src="imagenes/Temples Empresa/logo.jpg" alt="SandwichDV" height="80" class="d-inline-block align-text-top logo_empresa">
+            
+            <!-- Controles de la derecha -->
+            <div class="d-flex align-items-center order-lg-3 ms-auto gap-1 gap-lg-3">
+                <button class="navbar-toggler border-0 px-2" type="button" data-bs-toggle="collapse" data-bs-target="#menuNavegacion" aria-controls="menuNavegacion" aria-expanded="false" aria-label="Alternar navegación">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </div>
+
+            <!-- Links -->
+            <div class="collapse navbar-collapse order-lg-2" id="menuNavegacion">
+                <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fw-semibold gap-lg-5 text-center mt-3 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link " href="Pedir.html">PEDIR</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="nosotros.html">NOSOTROS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="sucursales.html">SUCURSALES</a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </nav>
+
+    <main class="bloque_fondo checkout-main" id="checkoutContent">
+        <div class="container">
+            <header class="checkout-heading">
+                <nav class="checkout-breadcrumb" aria-label="Ruta de navegación">
+                    <a href="Pedir.html">La carta</a><span aria-hidden="true">/</span><span aria-current="page">Finalizar pedido</span>
+                </nav>
+                <h1>Finaliza tu pedido</h1>
+                <p>El mismo sabor de siempre, a un paso de tu mesa.</p>
+            </header>
+            <div class="checkout-layout">
+                <form class="checkout-form" id="checkoutForm" method="post">
+                    <section class="checkout-panel checkout-account" aria-labelledby="checkoutAccountTitle">
+                        <div class="checkout-section-heading">
+                            <span class="checkout-step" aria-hidden="true">01</span><h2 id="checkoutAccountTitle">Tu cuenta</h2>
+                        </div>
+                        <div class="checkout-account-content">
+                            <div>
+                                <p class="checkout-account-status" id="checkoutAccountStatus" role="status">Identificación requerida</p>
+                                <p class="checkout-description" id="checkoutIdentityRequirement">Para comprar necesitas una cuenta e iniciar sesión. Así podemos identificar tu pedido.</p>
+                            </div>
+                            <div class="checkout-account-actions" id="checkoutAccountActions">
+                                <button type="button" id="checkoutLogin" class="checkout-button checkout-button-primary" data-bs-toggle="modal" data-bs-target="#perfilModal" data-auth-open-view="login">Iniciar sesión</button>
+                                <button type="button" class="checkout-button checkout-button-outline" data-bs-toggle="modal" data-bs-target="#perfilModal" data-auth-open-view="register">Crear cuenta</button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <fieldset class="checkout-panel checkout-locked" id="checkoutDeliverySection" aria-labelledby="checkoutDeliveryTitle" aria-describedby="checkoutIdentityRequirement" aria-disabled="true" disabled>
+                        <div class="checkout-section-heading">
+                            <span class="checkout-step" aria-hidden="true">02</span><h2 id="checkoutDeliveryTitle">¿Cómo lo quieres recibir?</h2>
+                        </div>
+                        <fieldset class="checkout-options">
+                            <legend class="visually-hidden">Forma de entrega</legend>
+                            <label class="checkout-option">
+                                <input type="radio" name="deliveryMethod" value="delivery">
+                                <span><strong>Delivery</strong><small>En tu dirección</small></span>
+                            </label>
+                            <label class="checkout-option">
+                                <input type="radio" name="deliveryMethod" value="pickup" checked>
+                                <span><strong>Retiro</strong><small>En una sucursal</small></span>
+                            </label>
+                        </fieldset>
+                        <fieldset class="checkout-delivery-fields" id="pickupFields">
+                            <legend class="visually-hidden">Datos de retiro</legend>
+                            <div class="checkout-field">
+                                <label for="pickupBranch">Sucursal de retiro</label>
+                                <select id="pickupBranch" name="pickupBranch" required aria-describedby="pickupBranchInfo">
+                                    <option value="">Selecciona una sucursal</option>
+                                    <option value="recoleta">Recoleta · Casa Matriz</option>
+                                    <option value="providencia">Providencia</option>
+                                    <option value="centro">Santiago Centro</option>
+                                </select>
+                            </div>
+                            <p class="checkout-branch-note" id="pickupBranchInfo" aria-live="polite">Selecciona una sucursal para ver su dirección y horario.</p>
+                        </fieldset>
+                        <fieldset class="checkout-delivery-fields" id="deliveryFields" hidden disabled>
+                            <legend class="visually-hidden">Dirección de delivery</legend>
+                            <div class="checkout-fields">
+                                <div class="checkout-field checkout-field-wide">
+                                    <label for="deliveryAddress">Calle y número</label>
+                                    <input id="deliveryAddress" name="deliveryAddress" autocomplete="address-line1" placeholder="Ej. Av. Recoleta 450" maxlength="160" required>
+                                </div>
+                                <div class="checkout-field">
+                                    <label for="deliveryApartment">Depto., casa u oficina <span class="fw-normal">(opcional)</span></label>
+                                    <input id="deliveryApartment" name="deliveryApartment" autocomplete="address-line2" placeholder="Ej. Depto. 302" maxlength="60">
+                                </div>
+                                <div class="checkout-field">
+                                    <label for="deliveryCommune">Comuna</label>
+                                    <input id="deliveryCommune" name="deliveryCommune" autocomplete="address-level3" placeholder="Ej. Recoleta" maxlength="80" required>
+                                </div>
+                                <div class="checkout-field checkout-field-wide">
+                                    <label for="deliveryNotes">Indicaciones de entrega <span class="fw-normal">(opcional)</span></label>
+                                    <textarea id="deliveryNotes" name="deliveryNotes" rows="2" placeholder="Algo que debamos saber para encontrarte." maxlength="200"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="checkout-contact">
+                            <h3>Datos de contacto</h3>
+                            <div class="checkout-fields">
+                                <div class="checkout-field checkout-field-wide">
+                                    <label for="contactName">Nombre y apellido</label>
+                                    <input id="contactName" name="contactName" autocomplete="name" minlength="2" maxlength="80" placeholder="Tu nombre y apellido" required>
+                                </div>
+                                <div class="checkout-field">
+                                    <label for="contactEmail">Correo electrónico</label>
+                                    <input id="contactEmail" name="contactEmail" type="email" autocomplete="email" maxlength="254" placeholder="nombre@correo.cl" required>
+                                </div>
+                                <div class="checkout-field">
+                                    <label for="contactPhone">Teléfono</label>
+                                    <input id="contactPhone" name="contactPhone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+56 9 1234 5678" required>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="checkout-panel checkout-locked" id="checkoutPaymentSection" aria-labelledby="checkoutPaymentTitle" aria-describedby="checkoutIdentityRequirement" aria-disabled="true" disabled>
+                        <div class="checkout-section-heading">
+                            <span class="checkout-step" aria-hidden="true">03</span><h2 id="checkoutPaymentTitle">Método de pago</h2>
+                        </div>
+                        <fieldset class="checkout-options">
+                            <legend class="visually-hidden">Elige un método de pago</legend>
+                            <label class="checkout-option">
+                                <input type="radio" name="paymentMethod" value="card" checked>
+                                <span><strong>Tarjeta</strong><small>Débito o crédito</small></span>
+                            </label>
+                            <label class="checkout-option">
+                                <input type="radio" name="paymentMethod" value="webpay">
+                                <span><strong>Webpay</strong><small>Pago en línea</small></span>
+                            </label>
+                        </fieldset>
+                        <!-- Referencia visual: la pasarela deberá alojar los campos de tarjeta. -->
+                        <fieldset class="checkout-card-fields" id="cardFields" disabled aria-describedby="paymentAvailability">
+                            <legend>Datos de la tarjeta</legend>
+                            <div class="checkout-fields">
+                                <div class="checkout-field checkout-field-wide">
+                                    <label for="cardHolder">Nombre del titular</label>
+                                    <input id="cardHolder" placeholder="Como aparece en la tarjeta" autocomplete="off">
+                                </div>
+                                <div class="checkout-field checkout-field-wide">
+                                    <label for="cardNumber">Número de tarjeta</label>
+                                    <input id="cardNumber" placeholder="••••  ••••  ••••  ••••" autocomplete="off">
+                                </div>
+                                <div class="checkout-field">
+                                    <label for="cardExpiry">Vencimiento</label>
+                                    <input id="cardExpiry" placeholder="MM / AA" autocomplete="off">
+                                </div>
+                                <div class="checkout-field">
+                                    <label for="cardCode">Código de seguridad</label>
+                                    <input id="cardCode" placeholder="•••" autocomplete="off">
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="checkout-gateway" id="webpayInfo" hidden>
+                            <strong>Webpay</strong>
+                            <p class="checkout-description">Selecciona esta opción para realizar el pago en línea cuando el servicio esté habilitado.</p>
+                        </div>
+                        <p class="checkout-payment-note" id="paymentAvailability">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                            <span>El pago en línea aún no está habilitado. Los campos de tarjeta son una referencia visual y no aceptan datos bancarios.</span>
+                        </p>
+                    </fieldset>
+                </form>
+
+                <aside class="checkout-panel checkout-summary checkout-locked" id="checkoutSummary" aria-labelledby="checkoutSummaryTitle">
+                    <div class="checkout-summary-heading"><h2 id="checkoutSummaryTitle">Tu pedido</h2><span class="checkout-count" id="checkoutItemCount">0 productos</span></div>
+                    <ul class="checkout-items" id="checkoutItems" aria-label="Productos de tu pedido"></ul>
+                    <p class="checkout-empty" id="checkoutEmpty">Tu carrito está vacío. Elige tus favoritos de la carta para continuar con tu pedido.</p>
+                    <dl class="checkout-totals" id="checkoutTotals" hidden>
+                        <div><dt>Subtotal</dt><dd id="checkoutSubtotal">$ 0</dd></div>
+                        <div><dt>Entrega</dt><dd id="checkoutShipping">Sin costo</dd></div>
+                        <div class="checkout-total"><dt id="checkoutTotalLabel">Total</dt><dd id="checkoutTotal">$ 0</dd></div>
+                    </dl>
+                    <p class="checkout-summary-note" id="checkoutShippingNote" hidden></p>
+                    <button type="submit" form="checkoutForm" class="checkout-button checkout-button-primary checkout-submit" id="checkoutSubmit" aria-describedby="checkoutLoginNotice" disabled>Continuar al pago <span aria-hidden="true">→</span></button>
+                    <p class="checkout-summary-note" id="checkoutLoginNotice">Inicia sesión para habilitar la entrega y el pago.</p>
+                    <a class="checkout-edit" href="Pedir.html" id="checkoutEdit">Volver a la carta</a>
+                    <p class="checkout-status" id="checkoutStatus" role="status" tabindex="-1" hidden></p>
+                    <noscript><p class="checkout-description">Activa JavaScript para ver tu carrito y elegir las opciones del pedido.</p></noscript>
+                </aside>
+            </div>
+        </div>
+    </main>
+    <footer class="checkout-footer"><div class="container"><span>SandwichDV · Hecho con sabor a Chile.</span><span>Tu pedido, a tu manera.</span></div></footer>
+
+<div class="modal fade auth-modal" id="perfilModal" tabindex="-1" aria-labelledby="perfilModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header auth-header">
+                        <h3 class="modal-title " id="perfilModalLabel">Mi cuenta · SandwichDV</h3>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="auth-card" id="authCard" data-auth-view="login">
+                            <section class="auth-form-panel auth-login" aria-labelledby="auth-login-title">
+                                <form id="authLoginForm" method="post">
+                                    <h3 id="auth-login-title">Iniciar sesión</h3>
+                                    <p class="auth-intro">Vuelve por tus favoritos.</p>
+                                    <div class="auth-field"><label for="auth-login-email">Correo electrónico</label><input id="auth-login-email" name="auth-login-email" type="email" autocomplete="username" required ></div><div class="auth-field"><label for="auth-login-password">Contraseña</label><div class="auth-password"><input id="auth-login-password" name="auth-login-password" type="password" autocomplete="current-password" required ><button type="button" class="auth-reveal" data-auth-password="auth-login-password" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button></div></div>
+                                    <label class="auth-remember"><input type="checkbox" id="authRemember"> Recordar mi correo</label>
+                                    <button type="button" class="auth-link" data-auth-view="reset">¿Olvidaste tu contraseña?</button>
+                                    <button type="submit" class="auth-submit">Iniciar sesión</button>
+                                    <p class="auth-mobile-switch">¿No tienes cuenta? <button type="button" class="auth-link" data-auth-view="register">Crear cuenta</button></p>
+                                </form>
+                            </section>
+                            <section class="auth-form-panel auth-register" aria-labelledby="auth-register-title" inert aria-hidden="true">
+                                <form id="authRegisterForm" method="post">
+                                    <h3 id="auth-register-title">Crear cuenta</h3>
+                                    <p class="auth-intro">Completa tus datos para identificar tus pedidos.</p>
+                                    <div class="auth-register-grid">
+                                        <div class="auth-field"><label for="auth-register-run">RUN</label><input id="auth-register-run" name="auth-register-run" type="text" placeholder="12345678K" maxlength="12" autocomplete="off" required aria-describedby="auth-run-help"><small id="auth-run-help">Ingresa tu RUN con dígito verificador</small></div>
+                                        <div class="auth-field"><label for="auth-register-birthdate">Fecha de nacimiento</label><input id="auth-register-birthdate" name="auth-register-birthdate" type="date" autocomplete="bday" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-name">Nombre completo</label><input id="auth-register-name" name="auth-register-name" type="text" autocomplete="name" minlength="3" maxlength="100" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-address">Dirección</label><input id="auth-register-address" name="auth-register-address" type="text" autocomplete="street-address" maxlength="160" required></div>
+                                        <div class="auth-field"><label for="auth-register-commune">Comuna</label><input id="auth-register-commune" name="auth-register-commune" type="text" autocomplete="address-level3" maxlength="80" required></div>
+                                        <div class="auth-field"><label for="auth-register-province">Provincia</label><input id="auth-register-province" name="auth-register-province" type="text" autocomplete="address-level2" maxlength="80" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-region">Región</label><input id="auth-register-region" name="auth-register-region" type="text" autocomplete="address-level1" maxlength="80" required></div>
+                                        <div class="auth-field"><label for="auth-register-sex">Sexo</label><select id="auth-register-sex" name="auth-register-sex" required><option value="">Selecciona</option><option value="femenino">Femenino</option><option value="masculino">Masculino</option><option value="no_informado">Prefiero no informar</option></select></div>
+                                        <div class="auth-field"><label for="auth-register-phone">Número telefónico</label><input id="auth-register-phone" name="auth-register-phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="20" placeholder="+56 9 1234 5678" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-email">Correo electrónico</label><input id="auth-register-email" name="auth-register-email" type="email" autocomplete="email" maxlength="254" required></div>
+                                        <div class="auth-field auth-field-wide"><label for="auth-register-password">Contraseña</label><div class="auth-password"><input id="auth-register-password" name="auth-register-password" type="password" autocomplete="new-password" required minlength="8" aria-describedby="auth-password-help auth-strength-text"><button type="button" class="auth-reveal" data-auth-password="auth-register-password" aria-label="Mostrar contraseña" aria-pressed="false">Ver</button></div></div>
+                                    </div>
+                                    <small id="auth-password-help">Usa al menos 8 caracteres.</small>
+                                    <div class="auth-strength" role="progressbar" aria-label="Fortaleza de la contraseña" aria-valuemin="0" aria-valuemax="5" aria-valuenow="0"><span></span></div>
+                                    <small id="auth-strength-text" aria-live="polite">Fortaleza de la contraseña</small>
+                                    <button type="submit" class="auth-submit">Crear cuenta</button>
+                                    <p class="auth-mobile-switch">¿Ya tienes cuenta? <button type="button" class="auth-link" data-auth-view="login">Iniciar sesión</button></p>
+                                </form>
+                            </section>
+                            <aside class="auth-overlay-container">
+                                <div class="auth-overlay">
+                                    <div class="auth-overlay-panel auth-overlay-left" inert aria-hidden="true">
+                                        <span class="auth-brand">SANDWICHDV</span>
+                                        <h3>¡Ya eres de la casa!</h3>
+                                        <p>Inicia sesión y continúa con tu próximo pedido.</p>
+                                        <button type="button" class="auth-ghost" data-auth-view="login">Iniciar sesión</button>
+                                    </div>
+                                    <div class="auth-overlay-panel auth-overlay-right">
+                                        <span class="auth-brand">SANDWICHDV</span>
+                                        <h3>¡Bienvenido!</h3>
+                                        <p>Crea tu cuenta para guardar tus favoritos y disfrutar de cada pedido.</p>
+                                        <button type="button" class="auth-ghost" data-auth-view="register">Crear cuenta</button>
+                                    </div>
+                                </div>
+                            </aside>
+                            <section class="auth-reset" hidden aria-labelledby="auth-reset-title">
+                                <form id="authResetForm" method="post">
+                                    <h3 id="auth-reset-title">Recuperar contraseña</h3>
+                                    <p class="auth-intro">Ingresa el correo asociado a tu cuenta.</p>
+                                    <div class="auth-field"><label for="auth-reset-email">Correo electrónico</label><input id="auth-reset-email" name="auth-reset-email" type="email" autocomplete="email" required ></div>
+                                    <button type="submit" class="auth-submit">Solicitar recuperación</button>
+                                    <button type="button" class="auth-link" data-auth-view="login">Volver al inicio de sesión</button>
+                                </form>
+                            </section>
+                        </div>
+                        <p id="authStatus" class="auth-status" role="status" aria-live="polite" hidden></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

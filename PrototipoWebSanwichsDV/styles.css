@@ -71,6 +71,72 @@
     border: 4px solid var(--color-naranja-1) !important;
 }
 
+/* Categorías compactas: acompañan el recorrido solo dentro del catálogo. */
+.pagina-pedir {
+    --alto-navbar-pedido: 100px;
+    --alto-categorias-pedido: 0px;
+    scroll-behavior: smooth;
+}
+
+.categorias-pedido { display: none; }
+
+.pagina-pedir .categoria-titulo,
+.pagina-pedir #not-burger {
+    scroll-margin-top: calc(var(--alto-navbar-pedido) + var(--alto-categorias-pedido) + 16px);
+}
+
+@media (max-width: 1199.98px) {
+    .categorias-pedido {
+        position: sticky;
+        top: var(--alto-navbar-pedido);
+        z-index: 1010;
+        display: grid;
+        grid-template-columns: 1.25fr 1fr 1fr;
+        gap: 6px;
+        padding: 8px 6px;
+        margin-bottom: 16px;
+        border: 2px solid var(--color-naranja-2-light);
+        border-radius: 20px;
+        background: var(--color-azul-2-dark);
+        box-shadow: 0 4px 12px #06276b30;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .categoria-pedido {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+        min-height: 44px;
+        padding: 8px 6px;
+        border: 2px solid transparent;
+        border-radius: 30px;
+        background: #fff3df;
+        color: var(--color-azul-2-dark);
+        font-size: clamp(.875rem, 2.5vw, 1rem);
+        font-weight: 700;
+        text-decoration: none;
+        transition: background-color .2s ease, border-color .2s ease;
+    }
+
+    .categoria-pedido:hover,
+    .categoria-pedido[aria-current="location"] {
+        background: var(--color-naranja-2-light);
+        border-color: var(--color-naranja-1);
+        color: var(--color-azul-2-dark);
+    }
+
+    .categoria-pedido:focus-visible {
+        outline: 3px solid white;
+        outline-offset: 2px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pagina-pedir { scroll-behavior: auto; }
+    .categoria-pedido { transition: none; }
+}
+
 /* Ajustes de distribución del catálogo en móviles y tabletas. */
 @media (max-width: 991.98px) {
     #catalogoProductos .producto-imagen {
@@ -345,7 +411,7 @@
     font-weight: 600; 
 }
 
-.auth-modal .auth-field input { width: 100%; 
+.auth-modal .auth-field input, .auth-modal .auth-field select { width: 100%;
     min-width: 0; 
     border: 1px solid #ffffff80; 
     background: #ffffffed; 
@@ -355,7 +421,7 @@
     font: inherit; 
 }
 
-.auth-modal .auth-field input:focus { 
+.auth-modal .auth-field input:focus, .auth-modal .auth-field select:focus {
     outline: 2px solid var(--color-azul-1-light); 
     outline-offset: 2px; 
 }
@@ -516,6 +582,15 @@
     border-top: 1px solid #ffffff45; 
 }
 
+/* El registro conserva la transición del acceso y desplaza sus campos internamente. */
+.auth-modal .auth-card[data-auth-view="register"] { height: min(700px, calc(100dvh - 160px)); min-height: 360px; }
+.auth-modal .auth-register form { justify-content: flex-start; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; scrollbar-color: #ffffff80 transparent; padding: 24px 28px; }
+.auth-modal .auth-register form > * { flex-shrink: 0; }
+.auth-modal .auth-register-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-bottom: 12px; }
+.auth-modal .auth-register-grid .auth-field { margin: 0; min-width: 0; }
+.auth-modal .auth-field-wide { grid-column: 1 / -1; }
+.auth-modal #auth-run-help { display: block; font-size: 12px; margin-top: 5px; }
+
 .auth-modal .auth-mobile-switch { 
     display: none; 
 }
@@ -550,4 +625,10 @@
 }
 @media (prefers-reduced-motion: reduce) {
     .auth-modal *, .auth-modal *::before, .auth-modal *::after { transition: none !important; animation: none !important; }
+}
+
+@media (max-width: 575.98px) {
+    .auth-modal .auth-register-grid { grid-template-columns: minmax(0, 1fr); }
+    .auth-modal .auth-register form { padding: 22px; }
+    .auth-modal .auth-register :is(input, select) { font-size: 16px; }
 }

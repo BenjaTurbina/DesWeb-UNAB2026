@@ -1,7 +1,30 @@
 
 let carrito = {}; 
+const NOMBRE_PROMO_2X1 = 'Promo 2x1: Churrasco Italiano';
+
+function esMartesEnSantiago(fecha = new Date()) {
+    return new Intl.DateTimeFormat('en-US', {
+        timeZone: 'America/Santiago', weekday: 'short'
+    }).format(fecha) === 'Tue';
+}
+
+function actualizarPromo2x1() {
+    const disponible = esMartesEnSantiago();
+    const boton = document.getElementById('btnPromo2x1');
+    if (boton) {
+        boton.disabled = !disponible;
+        boton.textContent = disponible ? 'Pedir promoción' : 'Disponible solo los martes';
+    }
+    // Si la página permanece abierta al cambiar el día, la promoción caduca.
+    if (!disponible && carrito[NOMBRE_PROMO_2X1]) {
+        delete carrito[NOMBRE_PROMO_2X1];
+        renderizarCarrito();
+    }
+    return disponible;
+}
 
 function inicializarEventos() {
+    inicializarCategoriasPedido();
 
     // Mantener visible el apartado al cerrarse una lista anterior más larga.
     const acordeonFiltros = document.getElementById('acordeonFiltros');
@@ -34,11 +57,96 @@ function inicializarEventos() {
     // Conectar la mutacion fluida de los botones y el carrito
     inicializarBotonesCarrito();
 
+    // La identificación se solicita dentro del checkout, no para visitarlo.
+    const btnIrPagar = document.getElementById('btnIrPagar');
+    if (btnIrPagar) {
+        btnIrPagar.addEventListener('click', () => {
+            actualizarPromo2x1();
+            const items = Object.entries(carrito).map(([nombre, datos]) => {
+                const tarjeta = [...document.querySelectorAll('.bloque_producto .card-body')]
+                    .find(card => card.querySelector('.card-title')?.textContent.trim() === nombre);
+                const imagen = tarjeta?.closest('.card')?.querySelector('img')?.getAttribute('src') || '';
+                return { name: nombre, price: datos.precio, quantity: datos.cantidad, image: imagen };
+            });
+            if (!items.length) return;
+            const guardado = window.SandwichCart?.save(items) === true;
+            const error = document.getElementById('checkoutCartError');
+            if (error) error.hidden = guardado;
+            if (guardado) window.location.href = 'checkout.html';
+        });
+    }
+
     // Conectar boton de Promoción 2x1
     const btnPromo1 = document.getElementById('btnPromo2x1');
     if (btnPromo1) {
         btnPromo1.addEventListener('click', agregarPromo2x1);
+        actualizarPromo2x1();
+        setInterval(actualizarPromo2x1, 30000);
+        window.addEventListener('focus', actualizarPromo2x1);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) actualizarPromo2x1();
+        });
     }
+}
+
+function inicializarCategoriasPedido() {
+    const navegacion = document.querySelector('.categorias-pedido');
+    const navbar = document.querySelector('.navbar.sticky-top');
+    if (!navegacion || !navbar) return;
+
+    const formatoCompacto = window.matchMedia('(max-width: 1199.98px)');
+    const enlaces = [...navegacion.querySelectorAll('a')];
+    const titulos = enlaces.map(enlace => document.getElementById(enlace.hash.slice(1)));
+    let limiteSuperior = 0;
+    let actualizacionPendiente = false;
+
+    function actualizarCategoriaActiva() {
+        actualizacionPendiente = false;
+        if (!formatoCompacto.matches) return;
+        let activa = 0;
+        titulos.forEach((titulo, indice) => {
+            if (titulo.getBoundingClientRect().top <= limiteSuperior + 20) activa = indice;
+        });
+        // En pantallas altas, el final de página puede limitar el salto a Bebidas.
+        if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 2) {
+            activa = titulos.length - 1;
+        }
+        enlaces.forEach((enlace, indice) => {
+            if (indice === activa) enlace.setAttribute('aria-current', 'location');
+            else enlace.removeAttribute('aria-current');
+        });
+    }
+
+    function actualizarMedidas() {
+        const altoNavbar = navbar.getBoundingClientRect().height;
+        const altoCategorias = navegacion.getBoundingClientRect().height;
+        document.documentElement.style.setProperty('--alto-navbar-pedido', `${altoNavbar}px`);
+        document.documentElement.style.setProperty('--alto-categorias-pedido', `${altoCategorias}px`);
+        limiteSuperior = altoNavbar + altoCategorias;
+        actualizarCategoriaActiva();
+    }
+
+    function cambiarFormato() {
+        // Al ocultar los filtros, ningún criterio invisible debe ocultar productos.
+        const btnAplicar = document.getElementById('btnAplicarFiltros');
+        if (formatoCompacto.matches && btnAplicar?.classList.contains('btn-danger')) manejarFiltros();
+        actualizarMedidas();
+    }
+
+    enlaces.forEach((enlace, indice) => {
+        enlace.addEventListener('click', () => titulos[indice].focus({ preventScroll: true }));
+    });
+    window.addEventListener('scroll', () => {
+        if (!actualizacionPendiente && formatoCompacto.matches) {
+            actualizacionPendiente = true;
+            window.requestAnimationFrame(actualizarCategoriaActiva);
+        }
+    }, { passive: true });
+    formatoCompacto.addEventListener('change', cambiarFormato);
+    const medidas = new ResizeObserver(actualizarMedidas);
+    medidas.observe(navbar);
+    medidas.observe(navegacion);
+    cambiarFormato();
 }
 
 function manejarFiltros() {
@@ -161,7 +269,8 @@ function inicializarBotonesCarrito() {
 }
 
 function agregarPromo2x1() {
-    const nombrePromo = "Promo 2x1: Churrasco Italiano";
+    if (!actualizarPromo2x1()) return;
+    const nombrePromo = NOMBRE_PROMO_2X1;
     const precioPromo = 6500;
 
     if (carrito[nombrePromo]) {
@@ -186,6 +295,11 @@ function renderizarCarrito() {
     // Contador del carrito
     const badgeCarrito = document.getElementById('contador-carrito'); 
     let totalItems = 0; // Contador de la cantidad de productos
+
+    const btnIrPagar = document.getElementById('btnIrPagar');
+    if (btnIrPagar) btnIrPagar.disabled = Object.keys(carrito).length === 0;
+    const checkoutError = document.getElementById('checkoutCartError');
+    if (checkoutError) checkoutError.hidden = true;
 
     // Si borraron todo se indica
     if (Object.keys(carrito).length === 0) {
@@ -253,6 +367,7 @@ function renderizarCarrito() {
     contenedor.querySelectorAll('.btn-sumar-carrito').forEach(boton => {
         boton.addEventListener('click', function() {
             const nombre = this.getAttribute('data-nombre');
+            if (nombre === NOMBRE_PROMO_2X1 && !actualizarPromo2x1()) return;
             carrito[nombre].cantidad++;
             sincronizarBotonTarjeta(nombre, carrito[nombre].cantidad);
             renderizarCarrito();

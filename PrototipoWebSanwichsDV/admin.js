@@ -310,7 +310,11 @@
         const billedTotal = billed.reduce((sum, invoice) => sum + invoice.total, 0);
         $('invoiceTotals').textContent = `Facturado: ${money(billedTotal)} · Cobrado: ${money(revenue)} · Las anuladas se excluyen de los totales.`;
 
-        const hourly = Array.from({ length: 7 }, (_, index) => ({ hour: 11 + index, amount: 0 }));
+        // Cubrir toda la jornada y cualquier movimiento fuera de ese horario.
+        const paidHours = paid.map(invoice => Number(invoice.time.slice(0, 2)));
+        const firstHour = Math.min(10, ...paidHours);
+        const lastHour = Math.max(23, ...paidHours);
+        const hourly = Array.from({ length: lastHour - firstHour + 1 }, (_, index) => ({ hour: firstHour + index, amount: 0 }));
         paid.forEach(invoice => { const bucket = hourly.find(item => item.hour === Number(invoice.time.slice(0, 2))); if (bucket) bucket.amount += invoice.total; });
         const max = Math.max(...hourly.map(bucket => bucket.amount), 1);
         $('salesChart').replaceChildren();
@@ -336,20 +340,20 @@
         } else $('bestSeller').append(element('p', '', 'Aún no hay ventas pagadas en esta fecha.'));
     }
 
-    function renderProductStats() {
-        const active = products.filter(product => product.active).length;
-        $('productCount').textContent = products.length;
+    function updateCatalogSummary() {
+        const visible = products.filter(product => product.active).length;
         $('navProductCount').textContent = products.length;
-        $('productSummary').textContent = `${active} activos · ${products.length - active} inactivos`;
-        $('availabilityLabel').textContent = `${active} de ${products.length} activos`;
-        $('availabilityBar').style.setProperty('--active-width', `${products.length ? active / products.length * 100 : 0}%`);
-        $('catalogSummary').textContent = `${products.length} productos · ${active} disponibles en esta demostración.`;
+        $('productCount').textContent = products.length;
+        $('productSummary').textContent = `${visible} visibles · ${products.length - visible} ocultos`;
+        $('availabilityLabel').textContent = `${visible} de ${products.length} visibles`;
+        $('availabilityBar').style.setProperty('--active-width', `${products.length ? visible / products.length * 100 : 0}%`);
+        $('catalogSummary').textContent = `${products.length} productos · ${visible} visibles · ${products.length - visible} ocultos.`;
     }
 
     function renderCatalog(focusId = null) {
         const search = normalize($('productSearch').value.trim());
         const category = $('categoryFilter').value;
-        const state = $('statusFilter').value;
+        const state = $('visibilityFilter').value;
         const matching = products.filter(product => (!search || normalize(product.name + ' ' + product.tags.join(' ')).includes(search)) && (!category || product.category === category) && (!state || product.active === (state === 'active')));
         $('productList').replaceChildren();
         $('catalogEmpty').hidden = matching.length !== 0;
@@ -368,20 +372,20 @@
             const toggle = element('div', 'product-toggle');
             const label = element('label', 'switch');
             const input = element('input'); input.type = 'checkbox'; input.checked = product.active; input.id = 'product-toggle-' + product.id;
-            input.setAttribute('role', 'switch'); input.setAttribute('aria-label', 'Activar ' + product.name);
+            input.setAttribute('role', 'switch'); input.setAttribute('aria-label', 'Mostrar ' + product.name);
             input.addEventListener('change', () => {
                 product.active = input.checked;
-                renderProductStats(); renderCatalog(product.id);
-                showToast(product.active ? 'Producto activado' : 'Producto desactivado', `${product.name}: cambio aplicado solo en este panel de demostración.`);
+                updateCatalogSummary(); renderCatalog(product.id);
+                showToast(product.active ? 'Producto visible' : 'Producto oculto', `${product.name}: cambio aplicado solo en este catálogo de prueba.`);
             });
-            label.append(input, element('span', 'switch-track')); toggle.append(label, element('span', '', product.active ? 'Activo' : 'Inactivo'));
+            label.append(input, element('span', 'switch-track')); toggle.append(label, element('span', '', product.active ? 'Visible' : 'Oculto'));
             const edit = element('button', 'icon-button'); edit.type = 'button'; edit.setAttribute('aria-label', 'Editar ' + product.name); edit.append(icon('edit')); edit.addEventListener('click', () => editProduct(product));
             row.append(identity, element('span', 'product-price', money(product.price)), toggle, edit); $('productList').append(row);
         });
         if (focusId !== null) {
             const toggle = $('product-toggle-' + focusId);
             if (toggle) toggle.focus({ preventScroll: true });
-            else $('statusFilter').focus({ preventScroll: true });
+            else $('visibilityFilter').focus({ preventScroll: true });
         }
     }
 
@@ -401,9 +405,9 @@
         if (selectedImage) $('previewImage').src = selectedImage;
         else $('previewImage').removeAttribute('src');
         const active = $('productActive').checked;
-        $('previewState').textContent = active ? 'Activo' : 'Inactivo';
-        $('previewState').className = 'preview-state ' + (active ? 'status-paid' : 'status-cancelled');
-        $('formAvailabilityLabel').textContent = active ? 'Activo en el catálogo' : 'Guardado como inactivo';
+        $('previewState').textContent = active ? 'Visible' : 'Oculto';
+        $('previewState').className = 'preview-state ' + (active ? 'is-visible' : 'is-hidden');
+        $('formAvailabilityLabel').textContent = active ? 'Visible en el catálogo' : 'Oculto en el catálogo';
     }
 
     async function readImage(file) {
@@ -460,10 +464,13 @@
     $('reportDate').value = today;
     $('reportDate').addEventListener('change', () => { if (!$('reportDate').value) $('reportDate').value = today; renderReport(); });
     $('todayButton').addEventListener('click', () => { $('reportDate').value = today; renderReport(); });
+    $('reviewInactive').addEventListener('click', () => {
+        $('productSearch').value = ''; $('categoryFilter').value = ''; $('visibilityFilter').value = 'inactive';
+        renderCatalog(); $('catalogoAdmin').scrollIntoView({ behavior: 'smooth' });
+    });
     $('closeToast').addEventListener('click', () => { $('adminToast').hidden = true; });
-    $('reviewInactive').addEventListener('click', () => { $('productSearch').value = ''; $('categoryFilter').value = ''; $('statusFilter').value = 'inactive'; renderCatalog(); $('catalogoAdmin').scrollIntoView({ behavior: 'smooth' }); });
     $('productSearch').addEventListener('input', () => renderCatalog());
-    ['categoryFilter', 'statusFilter'].forEach(id => $(id).addEventListener('change', () => renderCatalog()));
+    ['categoryFilter', 'visibilityFilter'].forEach(id => $(id).addEventListener('change', () => renderCatalog()));
     $('productForm').addEventListener('input', event => { if (typeof event.target.setCustomValidity === 'function') event.target.setCustomValidity(''); updatePreview(); });
     $('productForm').addEventListener('change', updatePreview);
     $('resetForm').addEventListener('click', resetForm);
@@ -490,12 +497,12 @@
         const product = { id: editingId ?? Math.max(0, ...products.map(item => item.id)) + 1, name, description, price: Number($('productPrice').value), category: $('productCategory').value, tags, active: $('productActive').checked, image: selectedImage };
         if (wasEditing) products = products.map(item => item.id === editingId ? product : item);
         else products.unshift(product);
-        $('productSearch').value = ''; $('categoryFilter').value = ''; $('statusFilter').value = '';
-        renderProductStats(); renderCatalog(); resetForm();
+        $('productSearch').value = ''; $('categoryFilter').value = ''; $('visibilityFilter').value = '';
+        updateCatalogSummary(); renderCatalog(); resetForm();
         showToast(wasEditing ? 'Cambios guardados con éxito' : '¡Producto agregado con éxito!', `${product.name} ya aparece en este panel. Guardado de demostración; la conexión a la base de datos está pendiente.`);
     });
     document.querySelectorAll('.side-nav a').forEach(link => link.addEventListener('click', () => {
         document.querySelectorAll('.side-nav a').forEach(item => { item.classList.toggle('is-current', item === link); if (item === link) item.setAttribute('aria-current', 'location'); else item.removeAttribute('aria-current'); });
     }));
-    renderReport(); renderProductStats(); renderCatalog(); updatePreview();
+    renderReport(); updateCatalogSummary(); renderCatalog(); updatePreview();
 })();

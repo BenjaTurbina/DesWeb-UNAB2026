@@ -10,6 +10,10 @@
     const password = modal.querySelector('#auth-register-password');
     const loginEmail = modal.querySelector('#auth-login-email');
     const remember = modal.querySelector('#authRemember');
+    const registerForm = modal.querySelector('#authRegisterForm');
+    const birthdate = modal.querySelector('#auth-register-birthdate');
+    const today = new Intl.DateTimeFormat('sv-SE', { timeZone: 'America/Santiago', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+    birthdate.max = today;
     const panels = {
         login: modal.querySelector('.auth-login'),
         register: modal.querySelector('.auth-register'),
@@ -56,6 +60,29 @@
         modal.querySelector('#auth-strength-text').textContent = score === 0 ? 'Fortaleza de la contraseña' : score <= 2 ? 'Fortaleza: baja' : score === 3 ? 'Fortaleza: media' : 'Fortaleza: alta';
     }
     password.addEventListener('input', updateStrength);
+    registerForm.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', () => input.setCustomValidity(''));
+        input.addEventListener('change', () => input.setCustomValidity(''));
+    });
+
+    function validateRegistration() {
+        const run = modal.querySelector('#auth-register-run');
+        const compactRun = run.value.replace(/[.\s-]/g, '').toUpperCase();
+        const validRunFormat = /^[0-9]{1,8}[0-9K]$/.test(compactRun);
+        run.setCustomValidity(validRunFormat ? '' : 'Escribe el RUN con su dígito verificador, por ejemplo 12.345.678-5.');
+        if (validRunFormat) run.value = compactRun.slice(0, -1) + '-' + compactRun.slice(-1);
+        ['name', 'address', 'commune', 'province', 'region'].forEach(field => {
+            const input = modal.querySelector('#auth-register-' + field);
+            input.value = input.value.trim();
+            input.setCustomValidity(input.value ? '' : 'Completa este dato.');
+        });
+        const phone = modal.querySelector('#auth-register-phone');
+        const digits = phone.value.replace(/\D/g, '');
+        const validPhone = /^\+?[0-9 ()-]+$/.test(phone.value.trim()) && digits.length >= 8 && digits.length <= 15;
+        phone.setCustomValidity(validPhone ? '' : 'Escribe un número telefónico válido.');
+        birthdate.setCustomValidity(birthdate.value && birthdate.value <= today ? '' : 'Selecciona una fecha de nacimiento válida.');
+        return registerForm.reportValidity();
+    }
     try {
         const email = localStorage.getItem('sandwichdv.rememberedEmail');
         if (email) { loginEmail.value = email; remember.checked = true; }
@@ -64,6 +91,7 @@
         const form = panel.querySelector('form');
         form.addEventListener('submit', event => {
             event.preventDefault();
+            if (view === 'register' && !validateRegistration()) return;
             if (!form.reportValidity()) return;
             const data = Object.fromEntries(new FormData(form));
             const emailKey = `auth-${view === 'register' ? 'register' : view === 'reset' ? 'reset' : 'login'}-email`;
@@ -94,7 +122,7 @@
             }
         });
     });
-    modal.addEventListener('shown.bs.modal', () => setView('login'));
+    modal.addEventListener('shown.bs.modal', event => setView(event.relatedTarget?.dataset.authOpenView === 'register' ? 'register' : 'login'));
     modal.addEventListener('hidden.bs.modal', () => {
         modal.querySelectorAll('input[type="password"], .auth-password input').forEach(input => {
             input.value = '';
